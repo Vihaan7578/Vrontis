@@ -55,10 +55,7 @@ function App() {
             <ScrollToTop />
           </ErrorBoundary>
           
-          {/* Element Adjuster for temporary adjustments - TEMPORARILY DISABLED */}
-          {/* <ErrorBoundary>
-            <ElementAdjusterEnhanced />
-          </ErrorBoundary> */}
+
         </div>
       </Router>
     </HelmetProvider>
