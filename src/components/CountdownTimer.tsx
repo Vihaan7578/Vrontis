@@ -1,39 +1,40 @@
 import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+
+interface TimeLeft {
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
+}
 
 const CountdownTimer: React.FC = () => {
-  // Set conference date (October 4, 2025)
-  const conferenceDate = new Date('2025-10-04T09:00:00').getTime()
-  
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  })
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+  const [isEventStarted, setIsEventStarted] = useState(false)
+
+  // Event date: November 15, 2025 (you can modify this)
+  const eventDate = new Date('2025-11-15T09:00:00')
 
   useEffect(() => {
-    const updateCountdown = () => {
+    const timer = setInterval(() => {
       const now = new Date().getTime()
-      const difference = conferenceDate - now
+      const distance = eventDate.getTime() - now
 
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        })
-      } else {
+      if (distance < 0) {
+        setIsEventStarted(true)
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+      } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+        setTimeLeft({ days, hours, minutes, seconds })
       }
-    }
+    }, 1000)
 
-    updateCountdown()
-    const interval = setInterval(updateCountdown, 1000)
-
-    return () => clearInterval(interval)
-  }, [conferenceDate])
+    return () => clearInterval(timer)
+  }, [eventDate])
 
   const timeUnits = [
     { label: 'Days', value: timeLeft.days },
@@ -42,97 +43,74 @@ const CountdownTimer: React.FC = () => {
     { label: 'Seconds', value: timeLeft.seconds }
   ]
 
-  return (
-    <div className="text-center">
-      <motion.h3
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-3xl md:text-4xl font-serif font-bold text-aegis-white mb-8"
+  if (isEventStarted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="text-center py-16"
       >
-        Conference Begins In
-      </motion.h3>
+        <motion.div
+          animate={{ 
+            scale: [1, 1.05, 1],
+            rotate: [0, 5, -5, 0]
+          }}
+          transition={{ 
+            duration: 2, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="mb-8"
+        >
+          <div className="text-8xl mb-4">🎉</div>
+        </motion.div>
+        
+        <h2 className="text-4xl md:text-6xl font-heading text-aegis-brown mb-4">
+          Event is Live!
+        </h2>
+        <p className="text-xl text-aegis-burgundy font-subheading">
+          Vrontis Model UN is now in session
+        </p>
+      </motion.div>
+    )
+  }
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+  return (
+    <div className="w-full">
+      {/* Horizontal countdown display */}
+      <div className="flex items-center justify-center space-x-4 lg:space-x-8">
         {timeUnits.map((unit, index) => (
           <motion.div
             key={unit.label}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              duration: 0.6, 
-              delay: index * 0.1,
-              type: "spring",
-              stiffness: 120
-            }}
-            whileHover={{ scale: 1.05 }}
-            className="relative"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="relative group flex-1 max-w-xs"
           >
-            {/* Background glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-aegis-brown to-aegis-burgundy rounded-xl opacity-20 blur-xl" />
-            
-            {/* Timer card */}
-            <div className="relative glass-effect rounded-xl p-6 border border-aegis-brown/30 hover:border-aegis-highlight/50 transition-all duration-300">
+            {/* Main card - More compact horizontal design */}
+            <div className="bg-aegis-dark-gray border border-aegis-brown/20 rounded-xl p-4 lg:p-6 text-center hover:border-aegis-brown/40 transition-all duration-300 hover:transform hover:scale-105">
               {/* Number */}
-              <motion.div
-                key={unit.value} // Key change triggers animation
-                initial={{ rotateY: 90, opacity: 0 }}
-                animate={{ rotateY: 0, opacity: 1 }}
-                transition={{ duration: 0.3 }}
-                className="text-3xl md:text-4xl font-bold text-aegis-highlight mb-2"
-              >
-                {unit.value.toString().padStart(2, '0')}
-              </motion.div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={unit.value}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-2xl lg:text-4xl font-heading text-aegis-brown mb-2"
+                >
+                  {unit.value.toString().padStart(2, '0')}
+                </motion.div>
+              </AnimatePresence>
               
               {/* Label */}
-              <div className="text-sm md:text-base text-aegis-off-white font-medium">
+              <div className="text-aegis-white font-subheading text-sm lg:text-lg">
                 {unit.label}
               </div>
-              
-              {/* Animated separator dots */}
-              {index < 3 && (
-                <div className="hidden md:block absolute -right-2 top-1/2 transform -translate-y-1/2">
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="w-1 h-1 bg-aegis-highlight rounded-full mb-1"
-                  />
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                    className="w-1 h-1 bg-aegis-highlight rounded-full"
-                  />
-                </div>
-              )}
             </div>
           </motion.div>
         ))}
       </div>
-
-      {/* Motivational text */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.8 }}
-        className="text-aegis-off-white mt-8 text-lg max-w-md mx-auto"
-      >
-        Don't miss out on this extraordinary diplomatic experience. 
-        <span className="text-aegis-highlight font-semibold"> Secure your spot today!</span>
-      </motion.p>
-
-      {/* Pulse animation for urgency */}
-      <motion.div
-        animate={{ 
-          scale: [1, 1.02, 1],
-          opacity: [0.7, 1, 0.7]
-        }}
-        transition={{ 
-          duration: 3, 
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute inset-0 pointer-events-none rounded-xl border-2 border-aegis-highlight/30"
-      />
     </div>
   )
 }

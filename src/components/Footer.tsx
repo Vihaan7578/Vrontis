@@ -1,133 +1,104 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { usePlatformDetection } from '../utils/platformDetection'
+import { motion } from 'framer-motion'
 
 const Footer: React.FC = () => {
-  const platform = usePlatformDetection()
-  
+  const currentYear = new Date().getFullYear()
+
+  const navigationLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Committees', path: '/committees' },
+    { name: 'Agendas', path: '/agendas' },
+    { name: 'Team', path: '/team' },
+    { name: 'Registration', path: '/registration' },
+  ]
+
+  const socialLinks = [
+    { name: 'Instagram', href: '#', icon: '📸' },
+    { name: 'LinkedIn', href: '#', icon: '💼' },
+    { name: 'Twitter', href: '#', icon: '🐦' },
+    { name: 'Email', href: 'mailto:info@vrontismun.com', icon: '📧' },
+  ]
+
   return (
-    <footer className={`bg-aegis-dark-gray border-t border-aegis-brown/30 ${platform.isMobile ? 'mt-16' : 'mt-20'} safe-area-bottom`}>
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${platform.isMobile ? 'py-8' : 'py-12'} safe-area-left safe-area-right`}>
-        <div className={`grid ${platform.isMobile ? 'grid-cols-1 gap-6' : 'grid-cols-1 md:grid-cols-4 gap-8'}`}>
+    <footer className="bg-aegis-black border-t border-aegis-brown/20">
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Main Footer Content - Horizontal Layout */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 lg:space-x-12 mb-8"
+        >
           {/* Brand Section */}
-          <div className={`${platform.isMobile ? 'col-span-1' : 'col-span-1 md:col-span-2'}`}>
-            <h3 className={`${platform.isMobile ? 'text-2xl' : 'text-3xl'} font-serif font-black text-aegis-white mb-4`}>
-              AEGIS MUN
-            </h3>
-            <p className={`text-aegis-off-white ${platform.isMobile ? 'mb-4 text-sm' : 'mb-6'} max-w-md`}>
-              Empowering Voices. Crafting Futures. Join the premier Model United Nations 
-              conference where diplomacy meets audacity.
-            </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://www.instagram.com/aegis_mun2025/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-aegis-white hover:text-aegis-highlight transition-colors"
-                aria-label="Instagram"
-              >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.986 11.988 11.986s11.987-5.368 11.987-11.986C24.004 5.367 18.635.001 12.017.001zM8.648 16.239c-1.134 0-2.052-.918-2.052-2.051s.918-2.052 2.052-2.052 2.052.919 2.052 2.052-.918 2.051-2.052 2.051zm6.718 0c-1.134 0-2.052-.918-2.052-2.051s.918-2.052 2.052-2.052 2.051.919 2.051 2.052-.917 2.051-2.051 2.051z"/>
-                </svg>
-              </a>
+          <div className="flex items-center space-x-4">
+            <img 
+              src="/images/vrontis logo.png"
+              alt="Vrontis MUN Logo"
+              className="w-10 h-10 object-contain"
+            />
+            <div>
+              <h3 className="text-xl font-heading text-aegis-white">Vrontis MUN</h3>
+              <p className="text-sm text-aegis-burgundy">Diplomatic Excellence</p>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-aegis-white mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  to="/committees"
-                  className="text-aegis-off-white hover:text-aegis-highlight transition-colors"
-                >
-                  Committees
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/agendas"
-                  className="text-aegis-off-white hover:text-aegis-highlight transition-colors"
-                >
-                  Agendas
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/team"
-                  className="text-aegis-off-white hover:text-aegis-highlight transition-colors"
-                >
-                  Our Team
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/registration"
-                  className="text-aegis-off-white hover:text-aegis-highlight transition-colors"
-                >
-                  Registration
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Navigation Links */}
+          <nav className="flex flex-wrap items-center justify-center space-x-6">
+            {navigationLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="text-aegis-off-white hover:text-aegis-brown transition-colors duration-300 text-sm whitespace-nowrap"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
 
-          {/* Contact */}
-          <div>
-            <h4 className="text-lg font-semibold text-aegis-white mb-4">Contact</h4>
-            <ul className="space-y-2 text-aegis-off-white">
-              <li>
-                <span className="block">Email:</span>
+          {/* Contact & Social */}
+          <div className="flex items-center space-x-6">
+            <span className="text-aegis-off-white text-sm">
+              <span className="text-aegis-burgundy">Email:</span> info@vrontismun.com
+            </span>
+            <div className="flex space-x-3">
+              {socialLinks.map((social) => (
                 <a
-                  href="mailto:info@aegismun.com"
-                  className="text-aegis-highlight hover:text-aegis-white transition-colors"
+                  key={social.name}
+                  href={social.href}
+                  className="text-aegis-off-white hover:text-aegis-brown transition-colors duration-300 text-lg"
+                  aria-label={social.name}
                 >
-                  info@aegismun.com
+                  {social.icon}
                 </a>
-              </li>
-              <li>
-                <span className="block">Phone:</span>
-                <a
-                  href="tel:+1234567890"
-                  className="text-aegis-highlight hover:text-aegis-white transition-colors"
-                >
-                  +1 (234) 567-8900
-                </a>
-              </li>
-              <li>
-                <span className="block">Venue:</span>
-                <span>To Be Decided</span>
-              </li>
-            </ul>
+              ))}
+            </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-aegis-brown/30 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-aegis-off-white text-sm">
-            © 2025 AEGIS MUN. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a
-              href="#"
-              className="text-aegis-off-white hover:text-aegis-highlight transition-colors text-sm"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-aegis-off-white hover:text-aegis-highlight transition-colors text-sm"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="#"
-              className="text-aegis-off-white hover:text-aegis-highlight transition-colors text-sm"
-            >
-              Cookie Policy
-            </a>
+        {/* Bottom Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="border-t border-aegis-brown/20 pt-6"
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-aegis-off-white/70 text-sm">
+              © {currentYear} Vrontis Model United Nations. All rights reserved.
+            </p>
+            <div className="flex space-x-6 text-sm">
+              <a href="#" className="text-aegis-off-white/70 hover:text-aegis-brown transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-aegis-off-white/70 hover:text-aegis-brown transition-colors">
+                Terms of Service
+              </a>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   )

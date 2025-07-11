@@ -6,63 +6,97 @@ export default {
   ],
   theme: {
     screens: {
-      'xs': '480px',
+      'xs': '475px',
       'sm': '640px',
-      'md': '768px',
+      'md': '768px', 
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
-      // Mobile-first responsive design
-      'mobile': {'max': '767px'},
-      'tablet': {'min': '768px', 'max': '1023px'},
-      'desktop': {'min': '1024px'},
-      // Landscape and portrait orientations
-      'landscape': {'raw': '(orientation: landscape)'},
-      'portrait': {'raw': '(orientation: portrait)'},
-      // High DPI screens
-      'retina': {'raw': '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'},
     },
     extend: {
       colors: {
-        'aegis-black': 'var(--clr-aegis-black)',
-        'aegis-white': 'var(--clr-aegis-white)',
-        'aegis-brown': 'var(--clr-aegis-brown)',
-        'aegis-burgundy': 'var(--clr-aegis-burgundy)',
-        'aegis-dark-gray': 'var(--clr-aegis-dark-gray)',
-        'aegis-off-white': 'var(--clr-aegis-off-white)',
-        'aegis-highlight': 'var(--clr-aegis-highlight)',
-      },
-      spacing: {
-        'safe-top': 'env(safe-area-inset-top)',
-        'safe-bottom': 'env(safe-area-inset-bottom)',
-        'safe-left': 'env(safe-area-inset-left)',
-        'safe-right': 'env(safe-area-inset-right)',
+        'aegis-black': '#000000',
+        'aegis-white': '#ffffff',
+        'aegis-brown': '#c99565',
+        'aegis-burgundy': '#e4bc96',
+        'aegis-dark-gray': '#1a1a1a',
+        'aegis-off-white': '#f8f8f8',
+        'aegis-highlight': '#c99565',
       },
       fontFamily: {
-        // Primary font for body text and general content
-        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        // Secondary font for headings and important text
-        'serif': ['Playfair Display', 'Georgia', 'serif'],
-        // Accent font for special elements (hero text, logos)
-        'display': ['Bebas Neue', 'Impact', 'Arial Black', 'sans-serif'],
+        'logo': ['Cinzel', 'serif'],
+        'heading': ['Anton', 'Impact', 'Arial Black', 'sans-serif'],
+        'subheading': ['Sanchez', 'Georgia', 'serif'],
+        'body': ['Libre Baskerville', 'Georgia', 'serif'],
+        'lexend': ['Lexend', 'sans-serif'],
       },
-      fontSize: {
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
       },
       animation: {
-        'float': 'float 3s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
+        'float': 'float 6s ease-in-out infinite',
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'slide-in': 'slideIn 0.6s ease-out',
+        'scale-in': 'scaleIn 0.6s ease-out',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
         },
-        glow: {
-          'from': { boxShadow: '0 0 20px -10px #FFD37E' },
-          'to': { boxShadow: '0 0 20px -2px #FFD37E' },
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        slideIn: {
+          '0%': { opacity: '0', transform: 'translateX(-30px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+      },
+      boxShadow: {
+        'lg': '0 4px 16px rgba(0, 0, 0, 0.3)',
+        'xl': '0 8px 24px rgba(201, 149, 101, 0.2)',
+        'glow': '0 0 16px rgba(201, 149, 101, 0.4)',
+      },
+      borderRadius: {
+        'xl': '12px',
+        '2xl': '16px',
+      },
+      lineHeight: {
+        'relaxed': '1.7',
+      },
+      letterSpacing: {
+        'widest': '0.1em',
+      },
+      transitionDuration: {
+        '400': '400ms',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.text-gradient': {
+          'background': 'linear-gradient(135deg, #c99565, #e4bc96)',
+          '-webkit-background-clip': 'text',
+          'background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+        },
+        '.bg-gradient-gold': {
+          'background': 'linear-gradient(135deg, #c99565, #e4bc96)',
+        },
+        '.border-gradient': {
+          'border': '2px solid',
+          'border-image': 'linear-gradient(135deg, #c99565, #e4bc96) 1',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 } 

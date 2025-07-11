@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { CardContainer, CardBody, CardItem } from '../components/Card3D'
 
 interface AgendaItem {
   id: string
@@ -14,98 +15,120 @@ interface AgendaItem {
 }
 
 const Agendas: React.FC = () => {
+  const [selectedDifficulty, setSelectedDifficulty] = useState<string>('All')
   const agendas: AgendaItem[] = [
     {
-      id: 'unsc-agenda',
-      committee: 'UNSC',
-      title: 'The situation in Eastern Europe: Addressing Regional Security Challenges',
-      description: 'This agenda focuses on the complex geopolitical landscape in Eastern Europe, examining the root causes of regional tensions and exploring diplomatic solutions to maintain international peace and security.',
+      id: 'uncsw-agenda',
+      committee: 'UNCSW',
+      title: 'Addressing gender based violence strengthening global frameworks for prevention, protection and justice',
+      description: 'This agenda examines the persistent global challenge of gender-based violence, focusing on developing comprehensive frameworks that address prevention, provide protection for survivors, and ensure justice for perpetrators while promoting gender equality worldwide.',
       keyPoints: [
-        'Analysis of current security threats in the region',
-        'Role of international law in conflict resolution',
-        'Economic sanctions and their humanitarian impact',
-        'Refugee crisis and international response',
-        'Cybersecurity implications of regional conflicts'
+        'Legal frameworks and international conventions on GBV',
+        'Prevention strategies and community-based interventions',
+        'Support systems for survivors and rehabilitation programs',
+        'Justice mechanisms and prosecution of perpetrators',
+        'Role of technology in both facilitating and combating GBV'
       ],
-      pdfUrl: '/agendas/unsc-eastern-europe.pdf',
-      difficulty: 'Advanced'
-    },
-    {
-      id: 'unga-agenda',
-      committee: 'UNGA',
-      title: 'Sustainable Development Goals: Progress and Future Challenges',
-      description: 'Examining the progress made on the UN Sustainable Development Goals since 2015 and addressing the challenges posed by global crises including the pandemic and climate change.',
-      keyPoints: [
-        'Assessment of SDG progress across different regions',
-        'Impact of COVID-19 on sustainable development',
-        'Climate change and environmental sustainability',
-        'Digital divide and technological inequality',
-        'Gender equality and social inclusion'
-      ],
-      pdfUrl: '/agendas/unga-sdg-progress.pdf',
-      difficulty: 'Beginner'
-    },
-    {
-      id: 'ecosoc-agenda',
-      committee: 'ECOSOC',
-      title: 'Digital Divide and Economic Inequality in the Post-Pandemic World',
-      description: 'Addressing the growing digital divide and its impact on economic inequality, particularly in developing nations, and exploring solutions for inclusive digital transformation.',
-      keyPoints: [
-        'Digital infrastructure development in LDCs',
-        'Educational technology access and equity',
-        'Remote work and economic opportunities',
-        'Digital financial inclusion',
-        'Public-private partnerships in digital development'
-      ],
-      pdfUrl: '/agendas/ecosoc-digital-divide.pdf',
+      pdfUrl: '/agendas/uncsw-gender-violence.pdf',
       difficulty: 'Intermediate'
     },
     {
       id: 'unhrc-agenda',
       committee: 'UNHRC',
-      title: 'Digital Rights and Privacy in the 21st Century',
-      description: 'Exploring the intersection of human rights and digital technology, focusing on privacy rights, freedom of expression online, and the responsibility of tech companies.',
+      title: 'Deliberation on increasing global prevalence on Xenophobia in the light of recent geopolitical events',
+      description: 'Addressing the alarming rise of xenophobia worldwide, examining how recent geopolitical tensions, migration crises, and economic uncertainties have contributed to increased discrimination and hatred against foreign nationals and minority communities.',
       keyPoints: [
-        'Right to privacy in the digital age',
-        'Freedom of expression and online censorship',
-        'Data protection and surveillance concerns',
-        'Digital rights of marginalized communities',
-        'Corporate responsibility and human rights'
+        'Root causes of contemporary xenophobia and discrimination',
+        'Impact of social media and misinformation on xenophobic attitudes',
+        'Protection mechanisms for refugees and migrant populations',
+        'Legislative and policy responses to combat xenophobia',
+        'International cooperation in promoting tolerance and inclusion'
       ],
-      pdfUrl: '/agendas/unhrc-digital-rights.pdf',
-      difficulty: 'Intermediate'
-    },
-    {
-      id: 'nato-agenda',
-      committee: 'NATO',
-      title: 'Cybersecurity Threats and Collective Defense in the Digital Age',
-      description: 'Examining evolving cybersecurity threats to NATO member states and developing comprehensive strategies for collective cyber defense under Article 5.',
-      keyPoints: [
-        'State-sponsored cyber attacks and attribution',
-        'Critical infrastructure protection',
-        'Information warfare and disinformation',
-        'Cyber deterrence strategies',
-        'International cooperation in cybersecurity'
-      ],
-      pdfUrl: '/agendas/nato-cybersecurity.pdf',
+      pdfUrl: '/agendas/unhrc-xenophobia.pdf',
       difficulty: 'Advanced'
     },
     {
-      id: 'who-agenda',
-      committee: 'WHO',
-      title: 'Global Health Preparedness for Future Pandemics',
-      description: 'Learning from the COVID-19 pandemic to build resilient health systems and improve global preparedness for future health emergencies.',
+      id: 'unga-agenda',
+      committee: 'UNGA',
+      title: 'Strengthening international cooperation to combat terrorism and violence extremism',
+      description: 'Examining comprehensive strategies to address the evolving threats of terrorism and violent extremism through enhanced international cooperation, information sharing, and coordinated response mechanisms while respecting human rights and fundamental freedoms.',
       keyPoints: [
-        'Early warning systems and disease surveillance',
-        'Equitable access to vaccines and treatments',
-        'Health system resilience and capacity building',
-        'International health regulations reform',
-        'One Health approach to pandemic prevention'
+        'Counter-terrorism strategies and international legal frameworks',
+        'Addressing root causes of radicalization and extremism',
+        'Intelligence sharing and international cooperation mechanisms',
+        'Protecting human rights while combating terrorism',
+        'Rehabilitation and reintegration of former combatants'
       ],
-      pdfUrl: '/agendas/who-pandemic-preparedness.pdf',
+      pdfUrl: '/agendas/unga-terrorism.pdf',
+      difficulty: 'Intermediate'
+    },
+    {
+      id: 'loksabha-agenda',
+      committee: 'LOK SABHA',
+      title: 'Deliberation upon secularism in India with special emphasis on nationwide UCC',
+      description: 'Examining the implementation of a Uniform Civil Code across India, analyzing its implications for secularism, religious freedom, and national unity while addressing concerns of various religious and cultural communities.',
+      keyPoints: [
+        'Constitutional provisions on secularism and religious freedom',
+        'Comparative analysis of personal laws across communities',
+        'Legal and social implications of implementing UCC',
+        'Balancing religious practices with gender equality',
+        'Federal structure and state vs. central jurisdiction'
+      ],
+      pdfUrl: '/agendas/loksabha-ucc.pdf',
+      difficulty: 'Advanced'
+    },
+    {
+      id: 'aippm-agenda',
+      committee: 'AIPPM',
+      title: 'Deliberation upon AFSPA and border security with special emphasis on political measures to counter Pakistan in light of Indus Water Treaty',
+      description: 'Addressing the complex challenges of border security, the controversial Armed Forces Special Powers Act, and water diplomacy with Pakistan, focusing on political solutions and strategic measures for regional stability.',
+      keyPoints: [
+        'Review of AFSPA provisions and human rights concerns',
+        'Border security challenges and strategic responses',
+        'Water sharing disputes and the Indus Water Treaty',
+        'Diplomatic engagement and conflict resolution mechanisms',
+        'Cross-party consensus on national security policies'
+      ],
+      pdfUrl: '/agendas/aippm-security.pdf',
+      difficulty: 'Advanced'
+    },
+    {
+      id: 'ipl-agenda',
+      committee: 'IPL',
+      title: 'Strategic planning and execution of IPL player auctions and team management policies',
+      description: 'This committee focuses on the complex world of cricket administration, examining player auction strategies, team composition policies, financial regulations, and the overall governance of one of the world\'s most popular cricket leagues.',
+      keyPoints: [
+        'Player auction mechanisms and bidding strategies',
+        'Team composition rules and salary cap management',
+        'Performance analytics and player valuation systems',
+        'Commercial aspects and revenue distribution models',
+        'Governance structures and regulatory frameworks'
+      ],
+      pdfUrl: '/agendas/ipl-auction.pdf',
+      difficulty: 'Intermediate'
+    },
+    {
+      id: 'ip-agenda',
+      committee: 'IP',
+      title: 'Media ethics, press freedom, and digital journalism in the contemporary world',
+      description: 'Addressing the evolving challenges facing modern journalism, including digital transformation, ethical reporting standards, press freedom under authoritarian regimes, and the role of visual media in shaping public opinion.',
+      keyPoints: [
+        'Digital transformation and future of journalism',
+        'Press freedom and safety of journalists worldwide',
+        'Ethical standards in reporting and visual media',
+        'Combating misinformation and fake news',
+        'Role of cartoonists and photographers in social commentary'
+      ],
+      pdfUrl: '/agendas/ip-media-ethics.pdf',
       difficulty: 'Beginner'
     }
   ]
+
+  const filteredAgendas = selectedDifficulty === 'All' 
+    ? agendas 
+    : agendas.filter(agenda => agenda.difficulty === selectedDifficulty)
+
+  const difficulties = ['All', 'Beginner', 'Intermediate', 'Advanced']
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -124,137 +147,135 @@ const Agendas: React.FC = () => {
       </Helmet>
 
       <div className="min-h-screen pt-16">
-        {/* Header */}
-        <section className="py-20 bg-gradient-to-br from-aegis-black to-aegis-dark-gray">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-7xl font-serif font-black text-aegis-white mb-6"
-            >
-              Committee Agendas
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg sm:text-xl text-aegis-off-white max-w-3xl mx-auto px-4"
-            >
-              Delve deep into the critical issues that will shape our world's future. 
-              Each agenda is carefully crafted to challenge delegates and foster meaningful debate.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg font-semibold text-aegis-highlight mt-4"
-            >
-              *These agendas are not final – they are sample layouts to show how the section may look.*
-            </motion.p>
+        {/* Header Section */}
+        <section className="py-16 bg-aegis-black">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Left: Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-center lg:text-left"
+              >
+                <h1 className="text-5xl md:text-6xl font-heading text-aegis-white mb-6">
+                  Committee Agendas
+                </h1>
+                <p className="text-xl text-aegis-burgundy font-subheading mb-4">
+                  Delve deep into the critical issues that will shape our world's future
+                </p>
+              </motion.div>
+
+              {/* Right: Filter Controls */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="lg:justify-self-end"
+              >
+                <div className="bg-aegis-dark-gray/50 rounded-2xl p-6 border border-aegis-brown/20">
+                  <h3 className="text-lg font-subheading text-aegis-white mb-4 text-center">Filter by Difficulty</h3>
+                  <div className="flex flex-wrap gap-3 justify-center">
+                    {difficulties.map((difficulty) => (
+                      <motion.button
+                        key={difficulty}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setSelectedDifficulty(difficulty)}
+                        className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                          selectedDifficulty === difficulty
+                            ? 'bg-aegis-brown text-aegis-white shadow-lg'
+                            : 'bg-aegis-dark-gray text-aegis-off-white border border-aegis-brown/50 hover:bg-aegis-brown/20'
+                        }`}
+                      >
+                        {difficulty}
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* Timeline Section */}
-        <section className="py-16 bg-aegis-black relative">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Vertical timeline line */}
-            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-1 bg-gradient-to-b from-aegis-brown to-aegis-burgundy h-full" />
-
-            {/* Agenda items */}
-            <div className="space-y-16">
-              {agendas.map((agenda, index) => (
-                <motion.div
-                  key={agenda.id}
-                  initial={{ 
-                    opacity: 0, 
-                    x: index % 2 === 0 ? -100 : 100,
-                    y: 50
-                  }}
-                  whileInView={{ 
-                    opacity: 1, 
-                    x: 0,
-                    y: 0
-                  }}
-                  transition={{ 
-                    duration: 0.8, 
-                    delay: 0.2,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  className={`relative flex items-center ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  } flex-col md:flex-row`}
-                >
-                  {/* Timeline node */}
-                  <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-aegis-brown to-aegis-burgundy rounded-full border-4 border-aegis-black shadow-lg z-10">
-                    <div className="w-full h-full bg-aegis-highlight rounded-full animate-pulse" />
-                  </div>
-
-                  {/* Content card */}
-                  <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 pl-16 md:pl-0' : 'md:pl-8 pl-16 md:pr-0'}`}>
-                    <div className="glass-effect rounded-xl p-8 border border-aegis-brown/30 hover:border-aegis-highlight/50 transition-all duration-300 group">
+        {/* Agendas Section - Larger 3x2 Layout */}
+        <section className="py-12 bg-aegis-black">
+          <div className="w-full px-4">
+            <div className="max-w-6xl mx-auto">
+              {/* Grid layout for agenda items */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-6">
+                {filteredAgendas.map((agenda, index) => (
+                  <CardContainer key={agenda.id} containerClassName="py-0">
+                    <CardBody className="w-full h-full">
+                      <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: index * 0.1, type: 'spring', stiffness: 100 }}
+                        viewport={{ once: true, margin: '-100px' }}
+                        className="relative flex flex-col items-center w-full h-full"
+                      >
+                        {/* Content card */}
+                        <CardItem
+                          translateZ="50"
+                          className="glass-effect rounded-xl p-6 sm:p-8 lg:p-10 border border-aegis-brown/30 hover:border-aegis-highlight/50 transition-all duration-300 group w-full h-full flex flex-col"
+                        >
                       {/* Committee badge and difficulty */}
-                      <div className="flex justify-between items-start mb-4">
-                        <span className="px-4 py-2 bg-aegis-burgundy/20 text-aegis-highlight font-semibold rounded-full">
+                      <div className="flex justify-between items-start mb-4 sm:mb-6">
+                        <span className="px-3 sm:px-5 py-2 sm:py-3 bg-aegis-burgundy/20 text-aegis-highlight font-semibold rounded-full text-base sm:text-lg">
                           {agenda.committee}
                         </span>
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${getDifficultyColor(agenda.difficulty)}`}>
+                        <span className={`px-3 sm:px-4 py-1 sm:py-2 rounded-full text-sm sm:text-base font-medium ${getDifficultyColor(agenda.difficulty)}`}>
                           {agenda.difficulty}
                         </span>
                       </div>
-
                       {/* Title */}
-                      <h3 className="text-xl md:text-2xl font-serif font-bold text-aegis-white mb-4 group-hover:text-aegis-highlight transition-colors">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-aegis-white mb-4 sm:mb-6 group-hover:text-aegis-highlight transition-colors text-center leading-tight">
                         {agenda.title}
                       </h3>
-
                       {/* Description */}
-                      <p className="text-aegis-off-white mb-6 leading-relaxed">
+                      <p className="text-sm sm:text-base text-aegis-off-white mb-4 sm:mb-6 leading-relaxed flex-grow">
                         {agenda.description}
                       </p>
-
                       {/* Key points */}
-                      <div className="mb-6">
-                        <h4 className="text-lg font-semibold text-aegis-highlight mb-3">Key Discussion Points:</h4>
-                        <ul className="space-y-2">
+                      <div className="mb-4 sm:mb-6">
+                        <h4 className="text-lg sm:text-xl font-bold text-aegis-highlight mb-3 sm:mb-4 text-center">Key Discussion Points:</h4>
+                        <ul className="space-y-2 sm:space-y-3">
                           {agenda.keyPoints.map((point, pointIndex) => (
                             <motion.li
                               key={pointIndex}
                               initial={{ opacity: 0, x: -20 }}
                               whileInView={{ opacity: 1, x: 0 }}
                               transition={{ delay: pointIndex * 0.1 }}
-                              className="flex items-start text-aegis-off-white"
+                              className="flex items-start text-aegis-off-white text-xs sm:text-sm"
                             >
-                              <span className="text-aegis-highlight mr-2 mt-1">•</span>
+                              <span className="text-aegis-highlight mr-2 sm:mr-3 mt-1 text-base sm:text-lg">•</span>
                               {point}
                             </motion.li>
                           ))}
                         </ul>
                       </div>
-
                       {/* Download button */}
                       {agenda.pdfUrl && (
-                        <a
-                          href={agenda.pdfUrl}
-                          className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-aegis-brown to-aegis-burgundy text-aegis-white font-semibold rounded-lg hover:from-aegis-burgundy hover:to-aegis-brown transform hover:scale-105 transition-all duration-300 shadow-lg"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                          Download Full Agenda
-                        </a>
+                        <div className="mt-auto">
+                          <a
+                            href={agenda.pdfUrl}
+                            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-aegis-brown to-aegis-burgundy text-aegis-white font-semibold rounded-lg hover:from-aegis-burgundy hover:to-aegis-brown transform hover:scale-105 transition-all duration-300 shadow-lg w-full justify-center text-sm sm:text-base"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <svg className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            Download Full Agenda
+                          </a>
+                        </div>
                       )}
-                    </div>
-                  </div>
-
-                  {/* Empty space for alternating layout */}
-                  <div className="hidden md:block w-5/12" />
-                </motion.div>
-              ))}
+                        </CardItem>
+                      </motion.div>
+                    </CardBody>
+                  </CardContainer>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -266,7 +287,7 @@ const Agendas: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-aegis-white mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-aegis-white mb-6 text-center"
             >
               Ready to tackle these challenges?
             </motion.h2>
