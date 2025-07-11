@@ -6,40 +6,7 @@ import CountdownTimer from '../components/CountdownTimer'
 import { CardContainer, CardBody, CardItem } from '../components/Card3D'
 import ScrollReveal, { ScrollRevealText, ScrollRevealStagger, ScrollRevealSplitText } from '../components/ScrollReveal'
 
-// Counter component for statistics
-const AnimatedCounter: React.FC<{ value: number; suffix?: string; duration?: number }> = ({ 
-  value, 
-  suffix = '', 
-  duration = 2 
-}) => {
-  const [count, setCount] = useState(0)
-  const counterRef = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(counterRef, { once: true })
 
-  useEffect(() => {
-    if (isInView) {
-      let startTime: number
-      let animationFrame: number
-
-      const animate = (currentTime: number) => {
-        if (!startTime) startTime = currentTime
-        const progress = Math.min((currentTime - startTime) / (duration * 1000), 1)
-        
-        const easeOutCubic = 1 - Math.pow(1 - progress, 3)
-        setCount(Math.floor(easeOutCubic * value))
-
-        if (progress < 1) {
-          animationFrame = requestAnimationFrame(animate)
-        }
-      }
-
-      animationFrame = requestAnimationFrame(animate)
-      return () => cancelAnimationFrame(animationFrame)
-    }
-  }, [isInView, value, duration])
-
-  return <span ref={counterRef}>{count}{suffix}</span>
-}
 
 const Home: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -144,7 +111,7 @@ const Home: React.FC = () => {
                   title: 'Memorable Experience',
                   description: 'Create lasting memories while developing skills that will benefit you throughout life.'
                 }
-              ].map((feature, index) => (
+              ].map((feature) => (
                 <CardContainer key={feature.title} containerClassName="py-0">
                   <CardBody className="w-full h-full">
                     <div className="w-full h-full">

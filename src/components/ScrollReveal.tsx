@@ -162,7 +162,7 @@ export const ScrollRevealSplitText: React.FC<{
     if (!container) return
 
     // Split text into individual characters
-    const chars = text.split('').map((char, index) => (
+    const chars = text.split('').map((char) => (
       char === ' ' ? '&nbsp;' : char
     ))
 
