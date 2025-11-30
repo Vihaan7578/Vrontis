@@ -15,7 +15,7 @@ const Team: React.FC = () => {
   const teamMembers: TeamMember[] = [
     {
       id: 'founder-1',
-      name: 'Awani Kumari',
+      name: 'Kumari Awani',
       position: 'Founder',
       image: '/images/Awani Kumari.jpeg',
       role: 'Founder'
