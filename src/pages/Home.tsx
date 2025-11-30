@@ -50,7 +50,7 @@ const Home: React.FC = () => {
               </ScrollRevealText>
               <ScrollRevealText delay={0.5}>
                 <div className="text-sm sm:text-base text-aegis-off-white font-body mb-4 sm:mb-6 lg:mb-8">
-                  May 16-17, 2025 • 9:00 AM
+                  May 16-17, 2026 • 9:00 AM
                 </div>
               </ScrollRevealText>
             </ScrollReveal>

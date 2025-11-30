@@ -60,7 +60,7 @@ const Registration: React.FC = () => {
                 Apply via Linktree
               </a>
               <p className="text-aegis-off-white/60 text-xs sm:text-sm">
-                Event dates: May 16-17, 2025
+                Event dates: May 16-17, 2026
               </p>
             </div>
           </motion.div>
