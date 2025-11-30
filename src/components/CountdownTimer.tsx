@@ -12,8 +12,8 @@ const CountdownTimer: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [isEventStarted, setIsEventStarted] = useState(false)
 
-  // Event date: November 15, 2025 (you can modify this)
-  const eventDate = new Date('2025-11-15T09:00:00')
+  // Event date: May 16, 2025 (Day 1 of the event)
+  const eventDate = new Date('2025-05-16T09:00:00')
 
   useEffect(() => {
     const timer = setInterval(() => {
