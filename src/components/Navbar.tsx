@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { usePlatformDetection } from '../utils/platformDetection'
 import { useNavbar } from '../contexts/NavbarContext'
 import { useScreenDimensions } from '../hooks/useScreenDimensions'
-import { VscHome, VscOrganization, VscCalendar, VscAccount, VscEdit } from 'react-icons/vsc'
+import { VscHome, VscOrganization, VscCalendar, VscAccount, VscEdit, VscMail } from 'react-icons/vsc'
 import { cn } from '../utils/cn'
 
 // Mouse enter context for 3D effects
@@ -174,6 +174,7 @@ const Navbar: React.FC = () => {
     { icon: <VscCalendar size={18} />, label: 'Agendas', path: '/agendas' },
     { icon: <VscAccount size={18} />, label: 'Team', path: '/team' },
     { icon: <VscEdit size={18} />, label: 'Register', path: '/registration' },
+    { icon: <VscMail size={18} />, label: 'Contact', path: '/contact' },
   ]
 
   const handleNavigation = (path: string) => {

@@ -11,6 +11,7 @@ const Footer: React.FC = () => {
     { name: 'Agendas', path: '/agendas' },
     { name: 'Team', path: '/team' },
     { name: 'Registration', path: '/registration' },
+    { name: 'Contact', path: '/contact' },
   ]
 
   const socialLinks = [

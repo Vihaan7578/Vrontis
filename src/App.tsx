@@ -24,6 +24,7 @@ import Committees from './pages/Committees'
 import Agendas from './pages/Agendas'
 import Team from './pages/Team'
 import Registration from './pages/Registration'
+import Contact from './pages/Contact'
 
 function AppContent() {
   const platform = usePlatformDetection()
@@ -49,6 +50,7 @@ function AppContent() {
                 <Route path="/agendas" element={<Agendas />} />
                 <Route path="/team" element={<Team />} />
                 <Route path="/registration" element={<Registration />} />
+                <Route path="/contact" element={<Contact />} />
               </Routes>
             </main>
             
