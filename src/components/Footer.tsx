@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
     },
     { 
       name: 'Email', 
-      href: 'mailto:info@vrontismun.com', 
+      href: 'mailto:vrontismun@gmail.com', 
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
           {/* Contact & Social */}
           <div className="flex items-center space-x-6">
             <span className="text-aegis-off-white text-sm">
-              <span className="text-aegis-burgundy">Email:</span> info@vrontismun.com
+              <span className="text-aegis-burgundy">Email:</span> vrontismun@gmail.com
             </span>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
