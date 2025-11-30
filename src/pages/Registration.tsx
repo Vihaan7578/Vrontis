@@ -48,7 +48,7 @@ const Registration: React.FC = () => {
                 </p>
               </div>
               <a
-                href="https://linktr.ee/vrontismun2025"
+                href="https://linktr.ee/Vrontis.MUN?utm_source=linktree_admin_share&utm_medium=social&utm_content=link_in_bio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full px-6 sm:px-8 py-3 sm:py-4 bg-aegis-burgundy text-aegis-white rounded-full hover:bg-aegis-brown transition-colors font-medium text-sm sm:text-base active:scale-95"

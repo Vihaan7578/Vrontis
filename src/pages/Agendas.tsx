@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CardContainer, CardBody, CardItem } from '../components/Card3D'
 
@@ -11,11 +11,16 @@ interface AgendaItem {
   description: string
   keyPoints: string[]
   pdfUrl?: string
-  difficulty: 'Beginner' | 'Intermediate' | 'Advanced'
 }
 
 const Agendas: React.FC = () => {
-  const [selectedDifficulty, setSelectedDifficulty] = useState<string>('All')
+  const [showNotification, setShowNotification] = useState(false)
+
+  const handleDownloadClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setShowNotification(true)
+    setTimeout(() => setShowNotification(false), 4000)
+  }
   const agendas: AgendaItem[] = [
     {
       id: 'uncsw-agenda',
@@ -29,8 +34,7 @@ const Agendas: React.FC = () => {
         'Justice mechanisms and prosecution of perpetrators',
         'Role of technology in both facilitating and combating GBV'
       ],
-      pdfUrl: '/agendas/uncsw-gender-violence.pdf',
-      difficulty: 'Intermediate'
+      pdfUrl: '/agendas/uncsw-gender-violence.pdf'
     },
     {
       id: 'unhrc-agenda',
@@ -44,8 +48,7 @@ const Agendas: React.FC = () => {
         'Legislative and policy responses to combat xenophobia',
         'International cooperation in promoting tolerance and inclusion'
       ],
-      pdfUrl: '/agendas/unhrc-xenophobia.pdf',
-      difficulty: 'Advanced'
+      pdfUrl: '/agendas/unhrc-xenophobia.pdf'
     },
     {
       id: 'unga-agenda',
@@ -59,8 +62,7 @@ const Agendas: React.FC = () => {
         'Protecting human rights while combating terrorism',
         'Rehabilitation and reintegration of former combatants'
       ],
-      pdfUrl: '/agendas/unga-terrorism.pdf',
-      difficulty: 'Intermediate'
+      pdfUrl: '/agendas/unga-terrorism.pdf'
     },
     {
       id: 'loksabha-agenda',
@@ -74,8 +76,7 @@ const Agendas: React.FC = () => {
         'Balancing religious practices with gender equality',
         'Federal structure and state vs. central jurisdiction'
       ],
-      pdfUrl: '/agendas/loksabha-ucc.pdf',
-      difficulty: 'Advanced'
+      pdfUrl: '/agendas/loksabha-ucc.pdf'
     },
     {
       id: 'aippm-agenda',
@@ -89,8 +90,7 @@ const Agendas: React.FC = () => {
         'Diplomatic engagement and conflict resolution mechanisms',
         'Cross-party consensus on national security policies'
       ],
-      pdfUrl: '/agendas/aippm-security.pdf',
-      difficulty: 'Advanced'
+      pdfUrl: '/agendas/aippm-security.pdf'
     },
     {
       id: 'ipl-agenda',
@@ -104,8 +104,7 @@ const Agendas: React.FC = () => {
         'Commercial aspects and revenue distribution models',
         'Governance structures and regulatory frameworks'
       ],
-      pdfUrl: '/agendas/ipl-auction.pdf',
-      difficulty: 'Intermediate'
+      pdfUrl: '/agendas/ipl-auction.pdf'
     },
     {
       id: 'ip-agenda',
@@ -119,25 +118,9 @@ const Agendas: React.FC = () => {
         'Combating misinformation and fake news',
         'Role of cartoonists and photographers in social commentary'
       ],
-      pdfUrl: '/agendas/ip-media-ethics.pdf',
-      difficulty: 'Beginner'
+      pdfUrl: '/agendas/ip-media-ethics.pdf'
     }
   ]
-
-  const filteredAgendas = selectedDifficulty === 'All' 
-    ? agendas 
-    : agendas.filter(agenda => agenda.difficulty === selectedDifficulty)
-
-  const difficulties = ['All', 'Beginner', 'Intermediate', 'Advanced']
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'Beginner': return 'text-green-400 bg-green-400/20'
-      case 'Intermediate': return 'text-yellow-400 bg-yellow-400/20'
-      case 'Advanced': return 'text-red-400 bg-red-400/20'
-      default: return 'text-gray-400 bg-gray-400/20'
-    }
-  }
 
   return (
     <>
@@ -150,53 +133,42 @@ const Agendas: React.FC = () => {
         {/* Header Section */}
         <section className="py-8 sm:py-12 lg:py-16 overflow-x-hidden">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-              {/* Left: Text Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-center lg:text-left"
-              >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading text-aegis-white mb-3 sm:mb-4 lg:mb-6">
-                  Committee Agendas
-                </h1>
-                <p className="text-base sm:text-lg lg:text-xl text-aegis-burgundy font-subheading mb-2 sm:mb-4">
-                  Delve deep into the critical issues that will shape our world's future
-                </p>
-              </motion.div>
-
-              {/* Right: Filter Controls */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="lg:justify-self-end"
-              >
-                <div className="bg-aegis-dark-gray/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-aegis-brown/20">
-                  <h3 className="text-sm sm:text-base lg:text-lg font-subheading text-aegis-white mb-3 sm:mb-4 text-center">Filter by Difficulty</h3>
-                  <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
-                    {difficulties.map((difficulty) => (
-                      <motion.button
-                        key={difficulty}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => setSelectedDifficulty(difficulty)}
-                        className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm ${
-                          selectedDifficulty === difficulty
-                            ? 'bg-aegis-brown text-aegis-white shadow-lg'
-                            : 'bg-aegis-dark-gray text-aegis-off-white border border-aegis-brown/50 hover:bg-aegis-brown/20'
-                        }`}
-                      >
-                        {difficulty}
-                      </motion.button>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading text-aegis-white mb-3 sm:mb-4 lg:mb-6">
+                Committee Agendas
+              </h1>
+              <p className="text-base sm:text-lg lg:text-xl text-aegis-burgundy font-subheading mb-2 sm:mb-4 max-w-2xl mx-auto">
+                Delve deep into the critical issues that will shape our world's future
+              </p>
+            </motion.div>
           </div>
         </section>
+
+        {/* Notification Toast */}
+        <AnimatePresence>
+          {showNotification && (
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-aegis-brown text-aegis-white px-6 py-4 rounded-xl shadow-xl border border-aegis-brown/50 max-w-sm sm:max-w-md text-center"
+            >
+              <div className="flex items-center gap-3">
+                <svg className="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="text-sm sm:text-base font-medium">
+                  Background guides will be updated a few weeks before the event!
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Agendas Section - Responsive Layout */}
         <section className="py-8 sm:py-12">
@@ -204,7 +176,7 @@ const Agendas: React.FC = () => {
             <div className="max-w-6xl mx-auto">
               {/* Grid layout for agenda items */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
-                {filteredAgendas.map((agenda, index) => (
+                {agendas.map((agenda, index) => (
                   <CardContainer key={agenda.id} containerClassName="py-0">
                     <CardBody className="w-full h-full">
                       <motion.div
@@ -219,13 +191,10 @@ const Agendas: React.FC = () => {
                           translateZ="50"
                           className="glass-effect rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8 border border-aegis-brown/30 hover:border-aegis-highlight/50 transition-all duration-300 group w-full h-full flex flex-col"
                         >
-                      {/* Committee badge and difficulty */}
-                      <div className="flex justify-between items-start mb-3 sm:mb-4 lg:mb-6">
-                        <span className="px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 bg-aegis-burgundy/20 text-aegis-highlight font-semibold rounded-full text-xs sm:text-sm lg:text-base">
+                      {/* Committee badge */}
+                      <div className="flex justify-center items-start mb-3 sm:mb-4 lg:mb-6">
+                        <span className="px-3 sm:px-4 lg:px-5 py-1.5 sm:py-2 bg-aegis-burgundy/20 text-aegis-highlight font-semibold rounded-full text-xs sm:text-sm lg:text-base">
                           {agenda.committee}
-                        </span>
-                        <span className={`px-2 sm:px-3 py-0.5 sm:py-1 lg:py-1.5 rounded-full text-[10px] sm:text-xs lg:text-sm font-medium ${getDifficultyColor(agenda.difficulty)}`}>
-                          {agenda.difficulty}
                         </span>
                       </div>
                       {/* Title */}
@@ -257,17 +226,15 @@ const Agendas: React.FC = () => {
                       {/* Download button */}
                       {agenda.pdfUrl && (
                         <div className="mt-auto">
-                          <a
-                            href={agenda.pdfUrl}
+                          <button
+                            onClick={handleDownloadClick}
                             className="inline-flex items-center px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 bg-gradient-to-r from-aegis-brown to-aegis-burgundy text-aegis-white font-semibold rounded-lg hover:from-aegis-burgundy hover:to-aegis-brown transform hover:scale-105 transition-all duration-300 shadow-lg w-full justify-center text-xs sm:text-sm lg:text-base"
-                            target="_blank"
-                            rel="noopener noreferrer"
                           >
                             <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-1.5 sm:mr-2 lg:mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
                             Download Agenda
-                          </a>
+                          </button>
                         </div>
                       )}
                         </CardItem>
