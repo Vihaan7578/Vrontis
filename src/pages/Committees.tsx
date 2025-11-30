@@ -106,32 +106,124 @@ const Committees: React.FC = () => {
         <meta name="description" content="Explore our committees at Vrontis MUN." />
       </Helmet>
 
-      <div className="min-h-screen pt-16 overflow-x-hidden">
-        {/* Header Section */}
-        <section className="py-8 sm:py-12 lg:py-16 overflow-x-hidden">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-              {/* Left: Text Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-center lg:text-left"
-              >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading text-aegis-white mb-3 sm:mb-4 lg:mb-6">
-                  Our Committees
-                </h1>
-                <p className="text-base sm:text-lg lg:text-xl text-aegis-burgundy font-subheading">
-                  Choose your challenge and dive into global issues
-                </p>
-              </motion.div>
+      <div className="min-h-screen pt-16 overflow-x-hidden relative">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Floating orbs */}
+          <motion.div 
+            animate={{ 
+              y: [0, -30, 0],
+              opacity: [0.3, 0.6, 0.3]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-[10%] w-32 h-32 sm:w-48 sm:h-48 bg-aegis-brown/10 rounded-full blur-3xl"
+          />
+          <motion.div 
+            animate={{ 
+              y: [0, 40, 0],
+              opacity: [0.2, 0.5, 0.2]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute top-1/3 right-[5%] w-40 h-40 sm:w-64 sm:h-64 bg-aegis-burgundy/10 rounded-full blur-3xl"
+          />
+          <motion.div 
+            animate={{ 
+              y: [0, -20, 0],
+              x: [0, 20, 0]
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+            className="absolute bottom-1/4 left-[20%] w-24 h-24 sm:w-40 sm:h-40 bg-aegis-brown/15 rounded-full blur-2xl"
+          />
+          
+          {/* Decorative lines */}
+          <div className="absolute top-40 left-0 w-1/3 h-px bg-gradient-to-r from-transparent via-aegis-brown/20 to-transparent" />
+          <div className="absolute top-60 right-0 w-1/4 h-px bg-gradient-to-l from-transparent via-aegis-burgundy/20 to-transparent" />
+          <div className="absolute bottom-40 left-0 w-1/2 h-px bg-gradient-to-r from-transparent via-aegis-brown/10 to-transparent" />
+        </div>
 
-            </div>
+        {/* Header Section */}
+        <section className="py-8 sm:py-12 lg:py-16 overflow-x-hidden relative">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <motion.div
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
+              {/* Decorative element above title */}
+              <motion.div 
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="w-16 sm:w-24 h-1 bg-gradient-to-r from-aegis-brown to-aegis-burgundy mx-auto mb-4 sm:mb-6 rounded-full"
+              />
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading text-aegis-white mb-3 sm:mb-4 lg:mb-6">
+                Our Committees
+              </h1>
+              <p className="text-base sm:text-lg lg:text-xl text-aegis-burgundy font-subheading max-w-2xl mx-auto mb-4">
+                Choose your challenge and dive into global issues
+              </p>
+              {/* Decorative element below subtitle */}
+              <motion.div 
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="w-32 sm:w-48 h-px bg-gradient-to-r from-transparent via-aegis-brown/50 to-transparent mx-auto"
+              />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-6 sm:py-8 relative">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex justify-center items-center gap-6 sm:gap-12 lg:gap-16"
+            >
+              <div className="text-center">
+                <motion.span 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.5, type: "spring" }}
+                  className="text-2xl sm:text-3xl lg:text-4xl font-heading text-aegis-brown"
+                >
+                  7
+                </motion.span>
+                <p className="text-[10px] sm:text-xs text-aegis-off-white mt-1">Committees</p>
+              </div>
+              <div className="w-px h-8 sm:h-12 bg-aegis-brown/30" />
+              <div className="text-center">
+                <motion.span 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
+                  className="text-2xl sm:text-3xl lg:text-4xl font-heading text-aegis-brown"
+                >
+                  7
+                </motion.span>
+                <p className="text-[10px] sm:text-xs text-aegis-off-white mt-1">Unique Agendas</p>
+              </div>
+              <div className="w-px h-8 sm:h-12 bg-aegis-brown/30" />
+              <div className="text-center">
+                <motion.span 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.9, type: "spring" }}
+                  className="text-2xl sm:text-3xl lg:text-4xl font-heading text-aegis-burgundy"
+                >
+                  ∞
+                </motion.span>
+                <p className="text-[10px] sm:text-xs text-aegis-off-white mt-1">Opportunities</p>
+              </div>
+            </motion.div>
           </div>
         </section>
 
         {/* Committees Grid - Responsive Layout */}
-        <section className="py-8 sm:py-12">
+        <section className="py-8 sm:py-12 relative">
           <div className="w-full px-4 sm:px-6">
             <div className="max-w-7xl mx-auto">
               {/* Mobile: 2 columns, Tablets: 2 columns, Desktop: 3-4 columns */}
@@ -148,17 +240,20 @@ const Committees: React.FC = () => {
                       >
                         <CardItem
                           translateZ="50"
-                          className="aspect-square w-full bg-aegis-dark-gray/50 rounded-xl sm:rounded-2xl border border-aegis-brown/30 hover:border-aegis-brown/50 transition-all duration-300 cursor-pointer p-3 sm:p-4 lg:p-6 flex flex-col group"
+                          className="aspect-square w-full bg-aegis-dark-gray/50 rounded-xl sm:rounded-2xl border border-aegis-brown/30 hover:border-aegis-brown/50 transition-all duration-300 cursor-pointer p-3 sm:p-4 lg:p-6 flex flex-col group relative overflow-hidden"
                         >
+                          {/* Hover glow effect */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-aegis-brown/0 via-aegis-brown/0 to-aegis-brown/0 group-hover:from-aegis-brown/5 group-hover:via-transparent group-hover:to-aegis-burgundy/5 transition-all duration-500" />
+                          
                           {/* Top - Committee Abbreviation */}
-                          <CardItem translateZ="80" className="text-center flex-shrink-0 mb-2 sm:mb-4">
+                          <CardItem translateZ="80" className="text-center flex-shrink-0 mb-2 sm:mb-4 relative z-10">
                             <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading text-aegis-white group-hover:text-aegis-brown transition-colors text-center w-full">
                               {committee.abbreviation}
                             </h3>
                           </CardItem>
 
                           {/* Middle - Agenda Preview */}
-                          <CardItem translateZ="60" className="flex-grow flex flex-col justify-center text-center px-1">
+                          <CardItem translateZ="60" className="flex-grow flex flex-col justify-center text-center px-1 relative z-10">
                             <div className="w-full">
                               <p className="text-[9px] sm:text-[10px] lg:text-xs text-aegis-burgundy font-medium mb-1 sm:mb-2">AGENDA</p>
                               <p className="text-[9px] sm:text-[10px] lg:text-xs text-aegis-off-white leading-relaxed line-clamp-3">
@@ -168,9 +263,16 @@ const Committees: React.FC = () => {
                           </CardItem>
 
                           {/* Bottom - Click hint */}
-                          <CardItem translateZ="40" className="text-center flex-shrink-0 mt-2 sm:mt-4">
-                            <p className="text-[10px] sm:text-xs lg:text-sm text-aegis-brown/80 group-hover:text-aegis-brown transition-colors">
-                              Click for details
+                          <CardItem translateZ="40" className="text-center flex-shrink-0 mt-2 sm:mt-4 relative z-10">
+                            <p className="text-[10px] sm:text-xs lg:text-sm text-aegis-brown/80 group-hover:text-aegis-brown transition-colors flex items-center justify-center gap-1">
+                              <span>View Details</span>
+                              <motion.span 
+                                className="inline-block"
+                                animate={{ x: [0, 3, 0] }}
+                                transition={{ duration: 1.5, repeat: Infinity }}
+                              >
+                                →
+                              </motion.span>
                             </p>
                           </CardItem>
                         </CardItem>
@@ -180,6 +282,40 @@ const Committees: React.FC = () => {
                 ))}
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Bottom CTA Section */}
+        <section className="py-12 sm:py-16 relative">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-gradient-to-r from-aegis-dark-gray/80 via-aegis-dark-gray/60 to-aegis-dark-gray/80 rounded-2xl p-6 sm:p-8 lg:p-10 border border-aegis-brown/20"
+            >
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-heading text-aegis-white mb-3">
+                Ready to Make Your Mark?
+              </h3>
+              <p className="text-sm sm:text-base text-aegis-off-white mb-6 max-w-xl mx-auto">
+                Select a committee that resonates with your interests and prepare to engage in meaningful diplomatic discourse.
+              </p>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <a 
+                  href="/registration" 
+                  className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-aegis-brown to-aegis-burgundy text-aegis-white font-semibold rounded-lg hover:from-aegis-burgundy hover:to-aegis-brown transition-all duration-300 shadow-lg text-sm sm:text-base"
+                >
+                  Register Now
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
       </div>

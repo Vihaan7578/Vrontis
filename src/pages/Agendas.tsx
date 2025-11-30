@@ -129,9 +129,48 @@ const Agendas: React.FC = () => {
         <meta name="description" content="Explore detailed agendas for all committees, covering the most pressing global challenges of our time." />
       </Helmet>
 
-      <div className="min-h-screen pt-16 overflow-x-hidden">
+      <div className="min-h-screen pt-16 overflow-x-hidden relative">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Animated gradient orbs */}
+          <motion.div 
+            animate={{ 
+              y: [0, -40, 0],
+              scale: [1, 1.1, 1],
+              opacity: [0.2, 0.4, 0.2]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-32 right-[15%] w-40 h-40 sm:w-56 sm:h-56 bg-aegis-burgundy/15 rounded-full blur-3xl"
+          />
+          <motion.div 
+            animate={{ 
+              y: [0, 30, 0],
+              x: [0, -20, 0],
+              opacity: [0.15, 0.35, 0.15]
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+            className="absolute top-1/2 left-[5%] w-32 h-32 sm:w-48 sm:h-48 bg-aegis-brown/20 rounded-full blur-3xl"
+          />
+          <motion.div 
+            animate={{ 
+              y: [0, -25, 0],
+              opacity: [0.1, 0.3, 0.1]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 5 }}
+            className="absolute bottom-1/3 right-[10%] w-36 h-36 sm:w-52 sm:h-52 bg-aegis-brown/10 rounded-full blur-3xl"
+          />
+          
+          {/* Decorative accent lines */}
+          <div className="absolute top-48 left-0 w-2/5 h-px bg-gradient-to-r from-transparent via-aegis-brown/25 to-transparent" />
+          <div className="absolute top-72 right-0 w-1/3 h-px bg-gradient-to-l from-transparent via-aegis-burgundy/25 to-transparent" />
+          
+          {/* Corner decorations */}
+          <div className="absolute top-20 left-4 w-20 h-20 border-l-2 border-t-2 border-aegis-brown/10 rounded-tl-3xl" />
+          <div className="absolute top-20 right-4 w-20 h-20 border-r-2 border-t-2 border-aegis-brown/10 rounded-tr-3xl" />
+        </div>
+
         {/* Header Section */}
-        <section className="py-8 sm:py-12 lg:py-16 overflow-x-hidden">
+        <section className="py-8 sm:py-12 lg:py-16 overflow-x-hidden relative">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: -30 }}
@@ -139,12 +178,36 @@ const Agendas: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
+              {/* Decorative icon */}
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ duration: 0.8, type: "spring" }}
+                className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 bg-aegis-brown/20 rounded-full flex items-center justify-center"
+              >
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-aegis-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </motion.div>
+              
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading text-aegis-white mb-3 sm:mb-4 lg:mb-6">
                 Committee Agendas
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-aegis-burgundy font-subheading mb-2 sm:mb-4 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-aegis-burgundy font-subheading mb-4 sm:mb-6 max-w-2xl mx-auto">
                 Delve deep into the critical issues that will shape our world's future
               </p>
+              
+              {/* Decorative divider */}
+              <motion.div 
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="flex items-center justify-center gap-3"
+              >
+                <div className="w-12 sm:w-20 h-px bg-gradient-to-r from-transparent to-aegis-brown/50" />
+                <div className="w-2 h-2 bg-aegis-brown rounded-full" />
+                <div className="w-12 sm:w-20 h-px bg-gradient-to-l from-transparent to-aegis-brown/50" />
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -170,8 +233,30 @@ const Agendas: React.FC = () => {
           )}
         </AnimatePresence>
 
+        {/* Info Banner */}
+        <section className="py-4 sm:py-6 relative">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-aegis-dark-gray/60 rounded-xl p-4 sm:p-5 border border-aegis-brown/20 flex items-center gap-3 sm:gap-4"
+            >
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-aegis-brown/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-aegis-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-sm sm:text-base text-aegis-white font-medium">Explore Our Agendas</p>
+                <p className="text-xs sm:text-sm text-aegis-off-white/80">Click on any agenda to view key discussion points and download the full background guide.</p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Agendas Section - Responsive Layout */}
-        <section className="py-8 sm:py-12">
+        <section className="py-8 sm:py-12 relative">
           <div className="w-full px-4 sm:px-6">
             <div className="max-w-6xl mx-auto">
               {/* Grid layout for agenda items */}
@@ -189,8 +274,10 @@ const Agendas: React.FC = () => {
                         {/* Content card */}
                         <CardItem
                           translateZ="50"
-                          className="glass-effect rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8 border border-aegis-brown/30 hover:border-aegis-highlight/50 transition-all duration-300 group w-full h-full flex flex-col"
+                          className="glass-effect rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8 border border-aegis-brown/30 hover:border-aegis-highlight/50 transition-all duration-300 group w-full h-full flex flex-col relative overflow-hidden"
                         >
+                          {/* Hover gradient overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-aegis-brown/0 via-transparent to-aegis-burgundy/0 group-hover:from-aegis-brown/5 group-hover:to-aegis-burgundy/5 transition-all duration-500 pointer-events-none" />
                       {/* Committee badge */}
                       <div className="flex justify-center items-start mb-3 sm:mb-4 lg:mb-6">
                         <span className="px-3 sm:px-4 lg:px-5 py-1.5 sm:py-2 bg-aegis-burgundy/20 text-aegis-highlight font-semibold rounded-full text-xs sm:text-sm lg:text-base">

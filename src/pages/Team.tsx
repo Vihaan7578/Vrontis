@@ -50,9 +50,34 @@ const Team: React.FC = () => {
         <meta name="description" content="Meet the dedicated team behind Vrontis MUN's exceptional diplomatic experience." />
       </Helmet>
 
-      <div className="min-h-screen pt-16 overflow-x-hidden">
+      <div className="min-h-screen pt-16 overflow-x-hidden relative">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Floating orbs */}
+          <motion.div 
+            animate={{ 
+              y: [0, -25, 0],
+              opacity: [0.2, 0.4, 0.2]
+            }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-24 left-[8%] w-28 h-28 sm:w-40 sm:h-40 bg-aegis-brown/15 rounded-full blur-3xl"
+          />
+          <motion.div 
+            animate={{ 
+              y: [0, 35, 0],
+              opacity: [0.15, 0.35, 0.15]
+            }}
+            transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute top-1/3 right-[10%] w-36 h-36 sm:w-52 sm:h-52 bg-aegis-burgundy/12 rounded-full blur-3xl"
+          />
+          
+          {/* Decorative lines */}
+          <div className="absolute top-52 left-0 w-1/3 h-px bg-gradient-to-r from-transparent via-aegis-brown/20 to-transparent" />
+          <div className="absolute top-64 right-0 w-1/4 h-px bg-gradient-to-l from-transparent via-aegis-burgundy/20 to-transparent" />
+        </div>
+
         {/* Header Section */}
-        <section className="py-8 sm:py-12 lg:py-16 overflow-x-hidden">
+        <section className="py-8 sm:py-12 lg:py-16 overflow-x-hidden relative">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: -30 }}
@@ -60,12 +85,32 @@ const Team: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
+              {/* Decorative icon */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, type: "spring" }}
+                className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 bg-aegis-brown/20 rounded-full flex items-center justify-center"
+              >
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-aegis-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </motion.div>
+              
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading text-aegis-white mb-3 sm:mb-4 lg:mb-6">
                 Our Team
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-aegis-burgundy font-subheading max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-aegis-burgundy font-subheading max-w-2xl mx-auto mb-4">
                 Meet the dedicated professionals shaping the future of diplomacy
               </p>
+              
+              {/* Decorative divider */}
+              <motion.div 
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 0.4 }}
+                className="w-24 sm:w-32 h-1 bg-gradient-to-r from-aegis-brown to-aegis-burgundy mx-auto rounded-full"
+              />
             </motion.div>
           </div>
         </section>
@@ -106,12 +151,21 @@ const Team: React.FC = () => {
                             </div>
                           </CardItem>
 
-                          {/* Name and Position at Bottom */}
-                          <CardItem translateZ="40" className="text-center flex-shrink-0 w-full mt-2 sm:mt-3">
-                            <h3 className="text-sm sm:text-base lg:text-lg font-heading text-aegis-white group-hover:text-aegis-brown transition-colors line-clamp-1 mb-1">
+                          {/* Name and Position at Bottom - Scales with container */}
+                          <CardItem translateZ="40" className="text-center flex-shrink-0 w-full mt-[5%]">
+                            <h3 
+                              className="font-heading text-aegis-white group-hover:text-aegis-brown transition-colors line-clamp-1 mb-[3%]"
+                              style={{ fontSize: 'clamp(0.875rem, 4vw, 1.5rem)' }}
+                            >
                               {member.name}
                             </h3>
-                            <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-aegis-brown/20 text-aegis-brown rounded-full text-[10px] sm:text-xs inline-block">
+                            <span 
+                              className="bg-aegis-brown/20 text-aegis-brown rounded-full inline-block"
+                              style={{ 
+                                fontSize: 'clamp(0.625rem, 2.5vw, 0.875rem)',
+                                padding: 'clamp(0.125rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem)'
+                              }}
+                            >
                               {member.position}
                             </span>
                           </CardItem>
