@@ -13,74 +13,10 @@
   "dir": "ltr",
   "icons": [
     {
-      "src": "/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/png"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "apple-touch-icon"
-    },
-    {
-      "src": "/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/android-chrome-512x512.png",
+      "src": "/images/vrontis logo.png",
       "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshot-mobile.png",
-      "sizes": "640x1136",
       "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "/screenshot-desktop.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    }
-  ],
-  "related_applications": [],
-  "prefer_related_applications": false,
-  "shortcuts": [
-    {
-      "name": "Register",
-      "short_name": "Register",
-      "description": "Register for AEGIS MUN",
-      "url": "/registration",
-      "icons": [
-        {
-          "src": "/favicon-32x32.png",
-          "sizes": "32x32",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Committees",
-      "short_name": "Committees",
-      "description": "View committees",
-      "url": "/committees",
-      "icons": [
-        {
-          "src": "/favicon-32x32.png",
-          "sizes": "32x32",
-          "type": "image/png"
-        }
-      ]
+      "purpose": "any maskable"
     }
   ]
 } 

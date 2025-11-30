@@ -1,8 +1,5 @@
-"use client";
-
 import { cn } from "../utils/cn";
-
-import React, {
+import {
   createContext,
   useState,
   useContext,

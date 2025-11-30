@@ -10,7 +10,7 @@ interface TeamMember {
   department: string
   bio: string
   expertise: string[]
-  role: 'Founders' | 'HODs' | 'Secretariats'
+  role: 'Core'
 }
 
 const Team: React.FC = () => {
@@ -24,61 +24,34 @@ const Team: React.FC = () => {
       department: '',
       bio: 'Leading Vrontis MUN with vision and diplomatic excellence, ensuring an exceptional conference experience for all delegates.',
       expertise: ['International Relations', 'Crisis Management', 'Public Speaking', 'Strategic Planning'],
-      role: 'Founders'
+      role: 'Core'
     },
     {
-      id: 'deputy-secretary',
+      id: 'founder',
       name: 'Shalabh',
       position: 'The Founder',
       department: '',
       bio: 'Supporting conference operations and maintaining the highest standards of diplomatic simulation and educational excellence.',
       expertise: ['Conference Management', 'Delegate Relations', 'Protocol Design', 'Team Leadership'],
-      role: 'Founders'
+      role: 'Core'
     },
     {
-      id: 'academic-director',
+      id: 'co-founder',
       name: 'Awani',
       position: 'The Co-Founder',
       department: '',
       bio: 'Overseeing all academic aspects of the conference, ensuring authentic diplomatic challenges and meaningful educational outcomes.',
       expertise: ['International Law', 'Research Design', 'Educational Development', 'Committee Structure'],
-      role: 'Founders'
+      role: 'Core'
     },
     {
-      id: 'research-coordinator',
-      name: 'Kavya',
-      position: 'Head of Department',
-      department: 'Research and Content',
-      bio: 'Developing comprehensive background guides and ensuring all committees have well-researched, current, and challenging agendas.',
-      expertise: ['Global Affairs Research', 'Policy Analysis', 'Academic Writing', 'Current Events'],
-      role: 'HODs'
-    },
-    {
-      id: 'operations-manager',
-      name: 'Aarush',
-      position: 'Head of Department',
-      department: 'Logistics and Operations',
-      bio: 'Coordinating all logistical aspects of the conference to ensure seamless operations and exceptional delegate experience.',
-      expertise: ['Event Management', 'Logistics Coordination', 'Vendor Relations', 'Crisis Resolution'],
-      role: 'HODs'
-    },
-    {
-      id: 'new-member',
-      name: 'Lashika',
-      position: 'Head of Department',
-      department: 'Media',
-      bio: 'Contributing to the excellence and growth of Vrontis MUN through dedicated service and innovative approaches.',
-      expertise: ['Leadership', 'Innovation', 'Strategy', 'Excellence'],
-      role: 'HODs'
-    },
-    {
-      id: 'outreach-director',
-      name: 'Vihaan',
-      position: 'Head of Department',
-      department: 'IT and Tech',
-      bio: 'Building partnerships with schools and organizations to expand Vrontis MUN reach and create networking opportunities.',
-      expertise: ['Partnership Development', 'Marketing Strategy', 'Community Relations', 'Digital Outreach'],
-      role: 'HODs'
+      id: 'deputy-secretary-general',
+      name: 'Saanvi',
+      position: 'The Deputy Secretary-General',
+      department: '',
+      bio: 'Supporting the Secretary-General in conference operations and maintaining the highest standards of diplomatic simulation and educational excellence.',
+      expertise: ['Conference Management', 'Delegate Relations', 'Protocol Design', 'Team Leadership'],
+      role: 'Core'
     }
   ]
 
@@ -86,7 +59,7 @@ const Team: React.FC = () => {
     ? teamMembers 
     : teamMembers.filter(member => member.role === selectedRole)
 
-  const roles = ['All', 'Founders', 'HODs']
+  const roles = ['All', 'Core']
 
   return (
     <>
@@ -95,11 +68,11 @@ const Team: React.FC = () => {
         <meta name="description" content="Meet the dedicated team behind Vrontis MUN's exceptional diplomatic experience." />
       </Helmet>
 
-      <div className="min-h-screen pt-16 bg-aegis-black">
+      <div className="min-h-screen pt-16 overflow-x-hidden">
         {/* Header Section */}
-        <section className="py-16 bg-aegis-black">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section className="py-8 sm:py-12 lg:py-16 overflow-x-hidden">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
               {/* Left: Text Content */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -107,10 +80,10 @@ const Team: React.FC = () => {
                 transition={{ duration: 0.8 }}
                 className="text-center lg:text-left"
               >
-                <h1 className="text-5xl md:text-6xl font-heading text-aegis-white mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading text-aegis-white mb-3 sm:mb-4 lg:mb-6">
                   Our Team
                 </h1>
-                <p className="text-xl text-aegis-burgundy font-subheading">
+                <p className="text-base sm:text-lg lg:text-xl text-aegis-burgundy font-subheading">
                   Meet the dedicated professionals shaping the future of diplomacy
                 </p>
               </motion.div>
@@ -122,16 +95,16 @@ const Team: React.FC = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="lg:justify-self-end"
               >
-                <div className="bg-aegis-dark-gray/50 rounded-2xl p-6 border border-aegis-brown/20">
-                  <h3 className="text-lg font-subheading text-aegis-white mb-4 text-center">Filter by Role</h3>
-                  <div className="flex flex-wrap gap-3 justify-center">
+                <div className="bg-aegis-dark-gray/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-aegis-brown/20">
+                  <h3 className="text-sm sm:text-base lg:text-lg font-subheading text-aegis-white mb-3 sm:mb-4 text-center">Filter by Role</h3>
+                  <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
                     {roles.map((role) => (
                       <motion.button
                         key={role}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setSelectedRole(role)}
-                        className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                        className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm ${
                           selectedRole === role
                             ? 'bg-aegis-brown text-aegis-white shadow-lg'
                             : 'bg-aegis-dark-gray text-aegis-off-white border border-aegis-brown/50 hover:bg-aegis-brown/20'
@@ -147,14 +120,15 @@ const Team: React.FC = () => {
           </div>
         </section>
 
-        {/* Team Members Grid - Larger 3x2 Layout */}
-        <section className="py-12 bg-aegis-black">
-          <div className="w-full px-4">
+        {/* Team Members Grid - Responsive Layout */}
+        <section className="py-8 sm:py-12">
+          <div className="w-full px-4 sm:px-6">
             <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-3 gap-6">
+              {/* Mobile: 1 column, Tablet: 2 columns, Desktop: 3-4 columns */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                 {filteredMembers.map((member, index) => (
-                  <div className="aspect-square">
-                    <CardContainer key={member.id} containerClassName="!p-0 !flex !items-stretch !justify-stretch !h-full !w-full">
+                  <div key={member.id} className="aspect-square">
+                    <CardContainer containerClassName="!p-0 !flex !items-stretch !justify-stretch !h-full !w-full">
                     <CardBody className="!w-full !h-full aspect-square">
                       <motion.div
                         initial={{ opacity: 0, y: 50 }}
@@ -164,32 +138,32 @@ const Team: React.FC = () => {
                       >
                         <CardItem
                           translateZ="50"
-                          className="!w-full !h-full aspect-square bg-aegis-dark-gray/50 rounded-2xl border border-aegis-brown/30 hover:border-aegis-brown/50 transition-all duration-300 group flex flex-col items-center justify-between p-6"
+                          className="!w-full !h-full aspect-square bg-aegis-dark-gray/50 rounded-xl sm:rounded-2xl border border-aegis-brown/30 hover:border-aegis-brown/50 transition-all duration-300 group flex flex-col items-center justify-between p-4 sm:p-6"
                         >
                           {/* Name at Top Center */}
                           <CardItem translateZ="80" className="text-center flex-shrink-0">
-                            <h3 className="text-3xl font-heading text-aegis-white group-hover:text-aegis-brown transition-colors line-clamp-2">
+                            <h3 className="text-xl sm:text-2xl lg:text-3xl font-heading text-aegis-white group-hover:text-aegis-brown transition-colors line-clamp-2">
                               {member.name}
                             </h3>
                           </CardItem>
 
                           {/* Image Placeholder in Middle Center */}
                           <CardItem translateZ="60" className="flex items-center justify-center flex-shrink-0">
-                            <div className="w-36 h-36 bg-aegis-dark-gray rounded-full border-2 border-aegis-brown/30 flex items-center justify-center">
-                              <span className="text-aegis-brown text-5xl">👤</span>
+                            <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 bg-aegis-dark-gray rounded-full border-2 border-aegis-brown/30 flex items-center justify-center">
+                              <span className="text-aegis-brown text-3xl sm:text-4xl lg:text-5xl">👤</span>
                             </div>
                           </CardItem>
 
                           {/* Department Tags at Bottom */}
                           <CardItem translateZ="40" className="text-center flex-shrink-0 w-full">
-                            <p className="text-xs text-aegis-burgundy font-medium mb-2">DEPARTMENT</p>
+                            <p className="text-[10px] sm:text-xs text-aegis-burgundy font-medium mb-1 sm:mb-2">DEPARTMENT</p>
                             <div className="flex flex-wrap gap-1 justify-center max-w-full">
                               {member.department && (
-                                <span className="px-3 py-1 bg-aegis-brown/20 text-aegis-brown rounded-full text-xs truncate max-w-full">
+                                <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-aegis-brown/20 text-aegis-brown rounded-full text-[10px] sm:text-xs truncate max-w-full">
                                   {member.department}
                                 </span>
                               )}
-                              <span className="px-3 py-1 bg-aegis-brown/20 text-aegis-brown rounded-full text-xs truncate max-w-full">
+                              <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-aegis-brown/20 text-aegis-brown rounded-full text-[10px] sm:text-xs truncate max-w-full">
                                 {member.position}
                               </span>
                             </div>
