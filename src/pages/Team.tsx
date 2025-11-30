@@ -15,16 +15,16 @@ const Team: React.FC = () => {
   const teamMembers: TeamMember[] = [
     {
       id: 'founder-1',
-      name: 'Shalabh Sharma',
+      name: 'Awani Kumari',
       position: 'Founder',
-      image: '/images/Shalabh Sharma.jpeg',
+      image: '/images/Awani Kumari.jpeg',
       role: 'Founder'
     },
     {
       id: 'founder-2',
-      name: 'Awani Kumari',
+      name: 'Shalabh Sharma',
       position: 'Founder',
-      image: '/images/Awani Kumari.jpeg',
+      image: '/images/Shalabh Sharma.jpeg',
       role: 'Founder'
     },
     {
