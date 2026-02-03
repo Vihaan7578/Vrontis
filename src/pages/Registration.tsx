@@ -12,16 +12,16 @@ const Registration: React.FC = () => {
       <div className="min-h-screen pt-14 sm:pt-16 safe-area-top overflow-x-hidden relative">
         {/* Decorative Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               y: [0, -30, 0],
               opacity: [0.2, 0.4, 0.2]
             }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-1/4 left-[10%] w-32 h-32 sm:w-48 sm:h-48 bg-aegis-brown/15 rounded-full blur-3xl"
           />
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               y: [0, 25, 0],
               opacity: [0.15, 0.35, 0.15]
             }}
@@ -49,14 +49,14 @@ const Registration: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </motion.div>
-            
-            <h1 
+
+            <h1
               className="font-heading text-aegis-white mb-3 sm:mb-4 lg:mb-6"
               style={{ fontSize: 'clamp(1.875rem, 5vw, 3.75rem)' }}
             >
               Registration
             </h1>
-            <p 
+            <p
               className="text-aegis-burgundy font-subheading max-w-lg mx-auto lg:mx-0"
               style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' }}
             >
@@ -71,26 +71,26 @@ const Registration: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full max-w-[90vw] sm:max-w-md lg:max-w-lg"
           >
-            <div 
+            <div
               className="glass-effect rounded-xl sm:rounded-2xl border border-aegis-brown/30 text-center relative overflow-hidden"
               style={{ padding: 'clamp(1.5rem, 4vw, 2.5rem)' }}
             >
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-aegis-brown/5 via-transparent to-aegis-burgundy/5 pointer-events-none" />
-              
+
               {/* Live indicator */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
                 className="flex items-center justify-center gap-2 mb-4 sm:mb-5 lg:mb-6"
               >
-                <motion.span 
+                <motion.span
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                   className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full"
                 />
-                <span 
+                <span
                   className="text-green-400 font-medium uppercase tracking-wider"
                   style={{ fontSize: 'clamp(0.625rem, 1.5vw, 0.75rem)' }}
                 >
@@ -99,17 +99,17 @@ const Registration: React.FC = () => {
               </motion.div>
 
               {/* Icon */}
-              <div 
+              <div
                 className="mx-auto bg-aegis-brown/20 rounded-full flex items-center justify-center mb-4 sm:mb-5 lg:mb-6"
-                style={{ 
-                  width: 'clamp(3.5rem, 8vw, 5rem)', 
-                  height: 'clamp(3.5rem, 8vw, 5rem)' 
+                style={{
+                  width: 'clamp(3.5rem, 8vw, 5rem)',
+                  height: 'clamp(3.5rem, 8vw, 5rem)'
                 }}
               >
-                <svg 
-                  className="text-aegis-brown" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="text-aegis-brown"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                   style={{ width: 'clamp(1.75rem, 4vw, 2.5rem)', height: 'clamp(1.75rem, 4vw, 2.5rem)' }}
                 >
@@ -119,13 +119,13 @@ const Registration: React.FC = () => {
 
               {/* Main text */}
               <div className="mb-4 sm:mb-5 lg:mb-6 relative z-10">
-                <p 
+                <p
                   className="text-aegis-white font-semibold mb-2"
                   style={{ fontSize: 'clamp(1.125rem, 3vw, 1.5rem)' }}
                 >
                   Secretariat & Delegate Applications Live Now!
                 </p>
-                <p 
+                <p
                   className="text-aegis-off-white"
                   style={{ fontSize: 'clamp(0.875rem, 2vw, 1rem)' }}
                 >
@@ -141,17 +141,17 @@ const Registration: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full bg-gradient-to-r from-aegis-brown to-aegis-burgundy text-aegis-white rounded-full hover:from-aegis-burgundy hover:to-aegis-brown transition-all duration-300 font-medium active:scale-95 shadow-lg"
-                style={{ 
+                style={{
                   padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem)',
                   fontSize: 'clamp(0.875rem, 2vw, 1rem)',
-                  minHeight: '44px', 
-                  touchAction: 'manipulation' 
+                  minHeight: '44px',
+                  touchAction: 'manipulation'
                 }}
               >
-                <svg 
-                  className="mr-2" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="mr-2"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                   style={{ width: 'clamp(1rem, 2.5vw, 1.25rem)', height: 'clamp(1rem, 2.5vw, 1.25rem)' }}
                 >
@@ -161,11 +161,11 @@ const Registration: React.FC = () => {
               </motion.a>
 
               {/* Event dates */}
-              <p 
+              <p
                 className="text-aegis-off-white/60 mt-4 sm:mt-5 lg:mt-6"
                 style={{ fontSize: 'clamp(0.75rem, 1.5vw, 0.875rem)' }}
               >
-                Event dates: May 16-17, 2026
+                Event dates: June 6-7, 2026
               </p>
             </div>
           </motion.div>

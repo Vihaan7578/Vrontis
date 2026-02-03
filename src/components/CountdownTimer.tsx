@@ -12,8 +12,8 @@ const CountdownTimer: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [isEventStarted, setIsEventStarted] = useState(false)
 
-  // Event date: May 16, 2026 (Day 1 of the event)
-  const eventDate = new Date('2026-05-16T09:00:00')
+  // Event date: June 6, 2026 (Day 1 of the event)
+  const eventDate = new Date('2026-06-06T09:00:00')
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -51,20 +51,20 @@ const CountdownTimer: React.FC = () => {
         className="text-center py-16"
       >
         <motion.div
-          animate={{ 
+          animate={{
             scale: [1, 1.05, 1],
             rotate: [0, 5, -5, 0]
           }}
-          transition={{ 
-            duration: 2, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
           }}
           className="mb-8"
         >
           <div className="text-8xl mb-4">🎉</div>
         </motion.div>
-        
+
         <h2 className="text-4xl md:text-6xl font-heading text-aegis-brown mb-4">
           Event is Live!
         </h2>
@@ -102,7 +102,7 @@ const CountdownTimer: React.FC = () => {
                   {unit.value.toString().padStart(2, '0')}
                 </motion.div>
               </AnimatePresence>
-              
+
               {/* Label */}
               <div className="text-aegis-white font-subheading text-sm lg:text-lg">
                 {unit.label}

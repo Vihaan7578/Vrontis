@@ -21,7 +21,7 @@ const Home: React.FC = () => {
   return (
     <div ref={containerRef} className="min-h-screen text-aegis-white overflow-x-hidden">
       {/* Hero Section - Clean obsidian black */}
-      <motion.section 
+      <motion.section
         style={{ y, opacity }}
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
@@ -38,8 +38,8 @@ const Home: React.FC = () => {
           {/* Event Countdown - Vertical Layout */}
           <div className="text-center mb-8 sm:mb-12 mt-4 sm:mt-8">
             <ScrollReveal direction="up" distance={60} duration={1}>
-              <ScrollRevealSplitText 
-                text="EVENT COUNTDOWN" 
+              <ScrollRevealSplitText
+                text="EVENT COUNTDOWN"
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-aegis-brown mb-2 sm:mb-4 text-center"
                 charDelay={0.05}
               />
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
               </ScrollRevealText>
               <ScrollRevealText delay={0.5}>
                 <div className="text-sm sm:text-base text-aegis-off-white font-body mb-4 sm:mb-6 lg:mb-8">
-                  May 16-17, 2026 • 9:00 AM
+                  June 6-7, 2026 • 9:00 AM
                 </div>
               </ScrollRevealText>
             </ScrollReveal>
@@ -67,8 +67,8 @@ const Home: React.FC = () => {
           {/* Features - Responsive Grid/Scroll */}
           <div className="space-y-4 sm:space-y-6 lg:space-y-8">
             <ScrollReveal direction="up" distance={50} duration={1} className="text-center">
-              <ScrollRevealSplitText 
-                text="Why Choose Vrontis MUN?" 
+              <ScrollRevealSplitText
+                text="Why Choose Vrontis MUN?"
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-aegis-white mb-2 text-center"
                 charDelay={0.04}
               />
@@ -133,8 +133,8 @@ const Home: React.FC = () => {
           <ScrollReveal direction="up" distance={60} duration={1.2} className="mt-8 sm:mt-10 lg:mt-12 py-6 sm:py-8 bg-aegis-brown/10 rounded-xl sm:rounded-2xl border border-aegis-brown/20">
             <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 space-y-4 sm:space-y-6 lg:space-y-0 lg:space-x-8">
               <ScrollReveal direction="left" distance={40} duration={0.8} delay={0.2} className="text-center lg:text-left">
-                <ScrollRevealSplitText 
-                  text="Ready to Shape the Future?" 
+                <ScrollRevealSplitText
+                  text="Ready to Shape the Future?"
                   className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-heading text-aegis-white mb-1 sm:mb-2"
                   charDelay={0.03}
                 />

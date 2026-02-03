@@ -32,7 +32,7 @@ const TermsOfService: React.FC = () => {
 
           {/* Content */}
           <div className="bg-aegis-black/40 rounded-2xl border border-aegis-brown/20 p-8 sm:p-12 space-y-10">
-            
+
             {/* Preamble */}
             <section>
               <h2 className="text-2xl font-heading text-aegis-white mb-4">1. Preamble and Definitions</h2>
@@ -87,42 +87,29 @@ const TermsOfService: React.FC = () => {
             {/* Refund Policy - Key Section */}
             <section className="border-2 border-aegis-brown/40 rounded-xl p-6 bg-aegis-brown/5">
               <h2 className="text-2xl font-heading text-aegis-white mb-4">
-                4. Refund and Cancellation Policy – Strict No-Refund Clause
+                4. Refund and Cancellation Policy
               </h2>
               <div className="text-aegis-off-white space-y-4 text-sm leading-relaxed">
                 <p className="font-semibold text-aegis-brown">
                   IMPORTANT: PLEASE READ THIS SECTION CAREFULLY BEFORE REGISTERING.
                 </p>
                 <p>
-                  4.1. <span className="font-semibold text-aegis-white">Absolute No-Refund Policy:</span> ALL REGISTRATION FEES PAID TO VRONTIS MUN ARE STRICTLY NON-REFUNDABLE. Once payment has been received and processed by the Organizers, no refund, whether full, partial, or pro-rata, shall be issued under any circumstances whatsoever, except as may be mandatorily required under applicable law.
+                  4.1. <span className="font-semibold text-aegis-white">General No-Refund Policy:</span> Subject to the provisions of Clause 4.5 and applicable law, all registration fees paid to Vrontis MUN are non-refundable. Once payment has been received and processed by the Organizers, no refund, whether full, partial, or pro-rata, shall ordinarily be issued.
                 </p>
                 <p>
-                  4.2. <span className="font-semibold text-aegis-white">Circumstances Explicitly Excluded from Refund:</span> Without limitation to the generality of Clause 4.1, no refund shall be granted in the following circumstances:
+                  4.2. <span className="font-semibold text-aegis-white">Scope of Non-Refundable Circumstances:</span> Without prejudice to the generality of Clause 4.1, registration fees shall not be refunded for reasons including but not limited to: personal circumstances; scheduling conflicts; inability to attend due to third-party obligations or approvals; logistical or travel-related impediments; changes in financial circumstances; withdrawal of intent to participate; dissatisfaction with any allocation, assignment, or aspect of the Conference; delays, postponements, rescheduling, or modifications to the Conference by the Organizers; partial attendance; technical difficulties affecting participation; or disciplinary actions under these Terms.
                 </p>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Personal emergencies, illness, health conditions, hospitalization, or medical circumstances affecting the Participant or their family members;</li>
-                  <li>Academic examinations, school or college schedules, educational commitments, or conflicts with academic calendars;</li>
-                  <li>Inability to obtain leave, permission, or approval from parents, guardians, educational institutions, or any third party;</li>
-                  <li>Travel disruptions, including but not limited to flight cancellations, train delays, road closures, visa issues, transportation strikes, or any other logistical impediments;</li>
-                  <li>Personal, family, or social commitments, including but not limited to weddings, religious ceremonies, festivals, or family functions;</li>
-                  <li>Financial difficulties, change in financial circumstances, or inability to afford ancillary expenses;</li>
-                  <li>Change of mind, loss of interest, or decision not to participate after registration;</li>
-                  <li>Dissatisfaction with committee allocation, country assignment, agenda, or any aspect of the Conference;</li>
-                  <li>Delays, postponements, or rescheduling of the Conference by the Organizers for any reason, including but not limited to force majeure events, venue unavailability, governmental orders, public health emergencies, natural disasters, civil unrest, or circumstances beyond the reasonable control of the Organizers;</li>
-                  <li>Modification, curtailment, or alteration of the Conference schedule, format, venue, committees, or any other aspect of the Event;</li>
-                  <li>Partial attendance or early departure from the Conference;</li>
-                  <li>Technical issues, including but not limited to internet connectivity problems, device malfunctions, or inability to access online components of the Conference;</li>
-                  <li>Disciplinary action, suspension, or expulsion from the Conference due to violation of the Code of Conduct or these Terms;</li>
-                  <li>Any other reason, circumstance, or cause not expressly enumerated herein.</li>
-                </ul>
                 <p>
-                  4.3. <span className="font-semibold text-aegis-white">No Transfer of Registration:</span> Registrations are strictly non-transferable. A registered Participant may not assign, transfer, sell, or otherwise dispose of their registration to any other individual or entity without the prior written consent of the Organizers, which may be granted or withheld at their absolute discretion.
+                  4.3. <span className="font-semibold text-aegis-white">Non-Transferability of Registration:</span> Registrations are strictly non-transferable. A registered Participant may not assign, transfer, sell, or otherwise dispose of their registration to any other individual or entity without the prior written consent of the Organizers, which may be granted or withheld at their absolute discretion.
                 </p>
                 <p>
                   4.4. <span className="font-semibold text-aegis-white">Conference Cancellation by Organizers:</span> In the unlikely event that the Organizers are compelled to cancel the Conference in its entirety and no rescheduled date is announced, the Organizers may, at their sole discretion, offer registered Participants either (a) a credit for a future Vrontis MUN event of equivalent value, or (b) a refund of the registration fee, less any non-recoverable expenses already incurred. The decision regarding the form and amount of any such compensation shall rest exclusively with the Organizers.
                 </p>
                 <p>
-                  4.5. <span className="font-semibold text-aegis-white">Acknowledgment:</span> By completing registration, you expressly acknowledge that you have read, understood, and agree to be bound by this Refund and Cancellation Policy, and you waive any right to dispute or contest the application of this policy.
+                  4.5. <span className="font-semibold text-aegis-white">Discretionary Refunds:</span> Notwithstanding the foregoing provisions, the Organizers reserve the right, in their sole and absolute discretion, to issue full or partial refunds in exceptional circumstances as may be announced or communicated by the Organizers from time to time. Any such discretionary refund shall not constitute a waiver of this policy nor establish any precedent for future refund requests.
+                </p>
+                <p>
+                  4.6. <span className="font-semibold text-aegis-white">Acknowledgment:</span> By completing registration, you expressly acknowledge that you have read, understood, and agree to be bound by this Refund and Cancellation Policy, and you waive any right to dispute or contest the application of this policy except as expressly provided herein.
                 </p>
               </div>
             </section>
