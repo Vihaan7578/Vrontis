@@ -59,9 +59,9 @@ class ErrorBoundary extends Component<Props, State> {
       'DOM',
       'not a child of this node'
     ]
-    
+
     const errorMessage = error.message.toLowerCase()
-    return domErrorPatterns.some(pattern => 
+    return domErrorPatterns.some(pattern =>
       errorMessage.includes(pattern.toLowerCase())
     )
   }
@@ -74,11 +74,11 @@ class ErrorBoundary extends Component<Props, State> {
       'render',
       'commit'
     ]
-    
+
     const errorMessage = error.message.toLowerCase()
     const stackTrace = (error.stack || '').toLowerCase()
-    
-    return reconciliationPatterns.some(pattern => 
+
+    return reconciliationPatterns.some(pattern =>
       errorMessage.includes(pattern) || stackTrace.includes(pattern)
     )
   }
@@ -118,7 +118,7 @@ class ErrorBoundary extends Component<Props, State> {
       }
 
       // For production, return null to hide broken components
-      if (process.env.NODE_ENV === 'production') {
+      if (import.meta.env.PROD) {
         return null
       }
 

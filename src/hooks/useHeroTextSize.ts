@@ -20,7 +20,7 @@ export const useHeroTextSize = (
   const [fontSize, setFontSize] = useState<number>(8) // Start with 8rem
   const [isCalculating, setIsCalculating] = useState<boolean>(true)
   const observerRef = useRef<ResizeObserver | null>(null)
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -68,7 +68,7 @@ export const useHeroTextSize = (
           // Create temporary spans to measure text width
           const tempVrontis = document.createElement('span')
           const tempMun = document.createElement('span')
-          
+
           tempVrontis.style.visibility = 'hidden'
           tempVrontis.style.position = 'absolute'
           tempVrontis.style.whiteSpace = 'nowrap'
@@ -76,7 +76,7 @@ export const useHeroTextSize = (
           tempVrontis.style.fontWeight = 'normal'
           tempVrontis.style.letterSpacing = letterSpacing
           tempVrontis.textContent = 'VRONTIS'
-          
+
           tempMun.style.visibility = 'hidden'
           tempMun.style.position = 'absolute'
           tempMun.style.whiteSpace = 'nowrap'
@@ -84,7 +84,7 @@ export const useHeroTextSize = (
           tempMun.style.fontWeight = 'normal'
           tempMun.style.letterSpacing = letterSpacing
           tempMun.textContent = 'MUN'
-          
+
           document.body.appendChild(tempVrontis)
           document.body.appendChild(tempMun)
 
@@ -92,7 +92,7 @@ export const useHeroTextSize = (
           let minSize = 3 // Minimum 3rem
           let maxSize = 25 // Maximum 25rem
           let optimalSize = minSize
-          
+
           // Calculate gap size based on screen width (matches Tailwind breakpoints)
           // gap-2 (0.5rem = 8px) on mobile, gap-4 (1rem = 16px) sm, gap-6 (1.5rem = 24px) md, gap-8 (2rem = 32px) lg
           let gapSize = 8 // Default mobile gap
@@ -116,7 +116,7 @@ export const useHeroTextSize = (
             // For horizontal layout (sm and above), texts are side by side
             // For vertical layout (mobile), texts stack
             const isMobile = containerWidth < 640
-            const totalWidth = isMobile 
+            const totalWidth = isMobile
               ? Math.max(vrontisWidth, munWidth) // Take the wider one for mobile
               : vrontisWidth + gapSize + munWidth // Sum + gap for desktop
 
@@ -137,7 +137,7 @@ export const useHeroTextSize = (
 
           document.body.removeChild(tempVrontis)
           document.body.removeChild(tempMun)
-          
+
           // Ensure minimum size
           optimalSize = Math.max(3, optimalSize)
           setFontSize(optimalSize)
@@ -146,11 +146,11 @@ export const useHeroTextSize = (
           // Consider both width and height, use the more restrictive constraint
           const widthBasedSize = (availableWidth * 0.32) / 16 // Convert px to rem
           const heightBasedSize = (textAreaHeight * 0.8) / 16 // Convert px to rem, account for line height
-          
+
           // Use the smaller value to ensure it fits, but with a minimum and maximum
           const calculatedSize = Math.min(widthBasedSize, heightBasedSize)
           const clampedSize = Math.max(4, Math.min(22, calculatedSize)) // Clamp between 4rem and 22rem
-          
+
           setFontSize(clampedSize)
         }
 

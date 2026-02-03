@@ -6,7 +6,7 @@ const ScrollToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [key, setKey] = useState(0)
   const mountedRef = useRef(true)
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   // Cleanup on unmount
   useEffect(() => {
@@ -36,7 +36,7 @@ const ScrollToTop: React.FC = () => {
         if (!mountedRef.current) return
 
         const shouldShow = window.pageYOffset > 300
-        
+
         // Clear any pending timeout
         if (scrollTimeoutRef.current) {
           clearTimeout(scrollTimeoutRef.current)
@@ -70,7 +70,7 @@ const ScrollToTop: React.FC = () => {
       }
     } catch (error) {
       console.error('Error setting up scroll listener:', error)
-      return () => {}
+      return () => { }
     }
   }, [isVisible, safeSetState])
 
@@ -105,15 +105,15 @@ const ScrollToTop: React.FC = () => {
             initial={{ opacity: 0, scale: 0.5, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 20 }}
-            transition={{ 
-              duration: 0.3, 
+            transition={{
+              duration: 0.3,
               ease: 'easeOut',
               opacity: { duration: 0.2 },
               scale: { duration: 0.3 },
               y: { duration: 0.3 }
             }}
             className="fixed bottom-8 right-8 z-40"
-            style={{ 
+            style={{
               isolation: 'isolate',
               willChange: 'transform, opacity'
             }}
@@ -123,7 +123,7 @@ const ScrollToTop: React.FC = () => {
               whileTap={{ scale: 0.9 }}
               onClick={scrollToTop}
               className="p-3 bg-gradient-to-r from-aegis-brown to-aegis-burgundy rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden"
-              style={{ 
+              style={{
                 isolation: 'isolate',
                 backfaceVisibility: 'hidden'
               }}
@@ -144,9 +144,9 @@ const ScrollToTop: React.FC = () => {
                   d="M7 11l5-5m0 0l5 5m-5-5v12"
                 />
               </svg>
-              
+
               {/* Simplified glow effect */}
-              <div 
+              <div
                 className="absolute inset-0 rounded-full bg-gradient-to-r from-aegis-brown to-aegis-burgundy opacity-0 group-hover:opacity-30 transition-opacity duration-300"
                 style={{ pointerEvents: 'none' }}
               />
