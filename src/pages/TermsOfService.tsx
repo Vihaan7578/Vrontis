@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
 const TermsOfService: React.FC = () => {
-  const lastUpdated = "February 3, 2026"
+  const lastUpdated = "February 3, 2026" // Updated
 
   return (
     <>
