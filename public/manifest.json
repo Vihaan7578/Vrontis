@@ -1,0 +1,22 @@
+{
+  "name": "AEGIS MUN - Empowering Voices. Crafting Futures.",
+  "short_name": "AEGIS MUN",
+  "description": "Join the premier Model United Nations conference where diplomacy meets audacity.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#811A29",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["education", "social", "productivity"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/images/vrontis logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+} 
