@@ -119,6 +119,20 @@ const Agendas: React.FC = () => {
         'Role of cartoonists and photographers in social commentary'
       ],
       pdfUrl: '/agendas/ip-media-ethics.pdf'
+    },
+    {
+      id: 'mootcourt-agenda',
+      committee: 'MOOT COURT',
+      title: 'Classified',
+      description: 'The agenda for Moot Court will be revealed soon. Prepare for an intense legal simulation experience that will challenge your advocacy skills and legal reasoning abilities.',
+      keyPoints: [
+        'Case details to be announced',
+        'Legal argumentation and courtroom procedures',
+        'Advocacy and presentation skills',
+        'Critical analysis of legal frameworks',
+        'Judicial decision-making processes'
+      ],
+      pdfUrl: '/agendas/mootcourt.pdf'
     }
   ]
 
@@ -133,8 +147,8 @@ const Agendas: React.FC = () => {
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Animated gradient orbs */}
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               y: [0, -40, 0],
               scale: [1, 1.1, 1],
               opacity: [0.2, 0.4, 0.2]
@@ -142,8 +156,8 @@ const Agendas: React.FC = () => {
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-32 right-[15%] w-40 h-40 sm:w-56 sm:h-56 bg-aegis-burgundy/15 rounded-full blur-3xl"
           />
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               y: [0, 30, 0],
               x: [0, -20, 0],
               opacity: [0.15, 0.35, 0.15]
@@ -151,19 +165,19 @@ const Agendas: React.FC = () => {
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 3 }}
             className="absolute top-1/2 left-[5%] w-32 h-32 sm:w-48 sm:h-48 bg-aegis-brown/20 rounded-full blur-3xl"
           />
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               y: [0, -25, 0],
               opacity: [0.1, 0.3, 0.1]
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 5 }}
             className="absolute bottom-1/3 right-[10%] w-36 h-36 sm:w-52 sm:h-52 bg-aegis-brown/10 rounded-full blur-3xl"
           />
-          
+
           {/* Decorative accent lines */}
           <div className="absolute top-48 left-0 w-2/5 h-px bg-gradient-to-r from-transparent via-aegis-brown/25 to-transparent" />
           <div className="absolute top-72 right-0 w-1/3 h-px bg-gradient-to-l from-transparent via-aegis-burgundy/25 to-transparent" />
-          
+
           {/* Corner decorations */}
           <div className="absolute top-20 left-4 w-20 h-20 border-l-2 border-t-2 border-aegis-brown/10 rounded-tl-3xl" />
           <div className="absolute top-20 right-4 w-20 h-20 border-r-2 border-t-2 border-aegis-brown/10 rounded-tr-3xl" />
@@ -189,16 +203,16 @@ const Agendas: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </motion.div>
-              
+
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading text-aegis-white mb-3 sm:mb-4 lg:mb-6">
                 Committee Agendas
               </h1>
               <p className="text-base sm:text-lg lg:text-xl text-aegis-burgundy font-subheading mb-4 sm:mb-6 max-w-2xl mx-auto">
                 Delve deep into the critical issues that will shape our world's future
               </p>
-              
+
               {/* Decorative divider */}
-              <motion.div 
+              <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.5 }}
@@ -278,52 +292,52 @@ const Agendas: React.FC = () => {
                         >
                           {/* Hover gradient overlay */}
                           <div className="absolute inset-0 bg-gradient-to-br from-aegis-brown/0 via-transparent to-aegis-burgundy/0 group-hover:from-aegis-brown/5 group-hover:to-aegis-burgundy/5 transition-all duration-500 pointer-events-none" />
-                      {/* Committee badge */}
-                      <div className="flex justify-center items-start mb-3 sm:mb-4 lg:mb-6">
-                        <span className="px-3 sm:px-4 lg:px-5 py-1.5 sm:py-2 bg-aegis-burgundy/20 text-aegis-highlight font-semibold rounded-full text-xs sm:text-sm lg:text-base">
-                          {agenda.committee}
-                        </span>
-                      </div>
-                      {/* Title */}
-                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-serif font-bold text-aegis-white mb-3 sm:mb-4 lg:mb-6 group-hover:text-aegis-highlight transition-colors text-center leading-tight">
-                        {agenda.title}
-                      </h3>
-                      {/* Description */}
-                      <p className="text-xs sm:text-sm lg:text-base text-aegis-off-white mb-3 sm:mb-4 lg:mb-6 leading-relaxed flex-grow line-clamp-4 sm:line-clamp-none">
-                        {agenda.description}
-                      </p>
-                      {/* Key points */}
-                      <div className="mb-3 sm:mb-4 lg:mb-6">
-                        <h4 className="text-sm sm:text-base lg:text-lg font-bold text-aegis-highlight mb-2 sm:mb-3 lg:mb-4 text-center">Key Discussion Points:</h4>
-                        <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
-                          {agenda.keyPoints.slice(0, 3).map((point, pointIndex) => (
-                            <motion.li
-                              key={pointIndex}
-                              initial={{ opacity: 0, x: -20 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              transition={{ delay: pointIndex * 0.1 }}
-                              className="flex items-start text-aegis-off-white text-[10px] sm:text-xs lg:text-sm"
-                            >
-                              <span className="text-aegis-highlight mr-1.5 sm:mr-2 lg:mr-3 mt-0.5 text-sm sm:text-base lg:text-lg">•</span>
-                              <span className="line-clamp-2 sm:line-clamp-none">{point}</span>
-                            </motion.li>
-                          ))}
-                        </ul>
-                      </div>
-                      {/* Download button */}
-                      {agenda.pdfUrl && (
-                        <div className="mt-auto">
-                          <button
-                            onClick={handleDownloadClick}
-                            className="inline-flex items-center px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 bg-gradient-to-r from-aegis-brown to-aegis-burgundy text-aegis-white font-semibold rounded-lg hover:from-aegis-burgundy hover:to-aegis-brown transform hover:scale-105 transition-all duration-300 shadow-lg w-full justify-center text-xs sm:text-sm lg:text-base"
-                          >
-                            <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-1.5 sm:mr-2 lg:mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                            </svg>
-                            Download Agenda
-                          </button>
-                        </div>
-                      )}
+                          {/* Committee badge */}
+                          <div className="flex justify-center items-start mb-3 sm:mb-4 lg:mb-6">
+                            <span className="px-3 sm:px-4 lg:px-5 py-1.5 sm:py-2 bg-aegis-burgundy/20 text-aegis-highlight font-semibold rounded-full text-xs sm:text-sm lg:text-base">
+                              {agenda.committee}
+                            </span>
+                          </div>
+                          {/* Title */}
+                          <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-serif font-bold text-aegis-white mb-3 sm:mb-4 lg:mb-6 group-hover:text-aegis-highlight transition-colors text-center leading-tight">
+                            {agenda.title}
+                          </h3>
+                          {/* Description */}
+                          <p className="text-xs sm:text-sm lg:text-base text-aegis-off-white mb-3 sm:mb-4 lg:mb-6 leading-relaxed flex-grow line-clamp-4 sm:line-clamp-none">
+                            {agenda.description}
+                          </p>
+                          {/* Key points */}
+                          <div className="mb-3 sm:mb-4 lg:mb-6">
+                            <h4 className="text-sm sm:text-base lg:text-lg font-bold text-aegis-highlight mb-2 sm:mb-3 lg:mb-4 text-center">Key Discussion Points:</h4>
+                            <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
+                              {agenda.keyPoints.slice(0, 3).map((point, pointIndex) => (
+                                <motion.li
+                                  key={pointIndex}
+                                  initial={{ opacity: 0, x: -20 }}
+                                  whileInView={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: pointIndex * 0.1 }}
+                                  className="flex items-start text-aegis-off-white text-[10px] sm:text-xs lg:text-sm"
+                                >
+                                  <span className="text-aegis-highlight mr-1.5 sm:mr-2 lg:mr-3 mt-0.5 text-sm sm:text-base lg:text-lg">•</span>
+                                  <span className="line-clamp-2 sm:line-clamp-none">{point}</span>
+                                </motion.li>
+                              ))}
+                            </ul>
+                          </div>
+                          {/* Download button */}
+                          {agenda.pdfUrl && (
+                            <div className="mt-auto">
+                              <button
+                                onClick={handleDownloadClick}
+                                className="inline-flex items-center px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 bg-gradient-to-r from-aegis-brown to-aegis-burgundy text-aegis-white font-semibold rounded-lg hover:from-aegis-burgundy hover:to-aegis-brown transform hover:scale-105 transition-all duration-300 shadow-lg w-full justify-center text-xs sm:text-sm lg:text-base"
+                              >
+                                <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-1.5 sm:mr-2 lg:mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Download Agenda
+                              </button>
+                            </div>
+                          )}
                         </CardItem>
                       </motion.div>
                     </CardBody>

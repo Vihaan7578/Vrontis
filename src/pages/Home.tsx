@@ -30,6 +30,61 @@ const Home: React.FC = () => {
         </div>
       </motion.section>
 
+      {/* April Bootcamp Announcement Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="relative overflow-hidden"
+      >
+        <div className="bg-gradient-to-r from-aegis-burgundy via-aegis-brown to-aegis-burgundy py-4 sm:py-5 px-4 sm:px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+              {/* Sparkle icon */}
+              <motion.div
+                animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="text-2xl sm:text-3xl"
+              >
+                ✨
+              </motion.div>
+
+              <div className="text-center sm:text-left">
+                <motion.div
+                  animate={{ opacity: [1, 0.7, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="inline-block px-2 py-0.5 bg-aegis-white/20 rounded-full text-[10px] sm:text-xs text-aegis-white font-bold uppercase tracking-wider mb-1"
+                >
+                  Coming Soon
+                </motion.div>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-heading text-aegis-white">
+                  🚀 April Bootcamp Announcement
+                </h3>
+                <p className="text-xs sm:text-sm text-aegis-off-white/90 mt-0.5">
+                  Exciting training sessions coming this April • Dates to be announced soon!
+                </p>
+              </div>
+
+              {/* Sparkle icon */}
+              <motion.div
+                animate={{ rotate: [0, -15, 15, 0], scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="text-2xl sm:text-3xl hidden sm:block"
+              >
+                ✨
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Animated background shimmer */}
+          <motion.div
+            animate={{ x: ['-100%', '200%'] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 pointer-events-none"
+          />
+        </div>
+      </motion.div>
+
       {/* Main Content - Responsive Layout */}
       <section className="py-8 sm:py-12 lg:py-16 overflow-x-hidden">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

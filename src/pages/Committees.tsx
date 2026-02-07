@@ -95,6 +95,17 @@ const Committees: React.FC = () => {
       description: 'A dynamic committee representing journalists, cartoonists, and photographers addressing global media challenges and press freedom.',
       chairs: ['Chair Name #13', 'Chair Name #14'],
       type: 'Media Committee'
+    },
+    {
+      id: 'mootcourt',
+      name: 'Moot Court',
+      abbreviation: 'MOOT COURT',
+      agenda: 'Classified',
+      size: 30,
+      difficulty: 'Intermediate',
+      description: 'A legal simulation committee where participants argue cases before a mock court, developing advocacy skills and legal reasoning through courtroom procedures.',
+      chairs: ['Chair Name #15', 'Chair Name #16'],
+      type: 'Legal Simulation'
     }
   ]
 
@@ -110,31 +121,31 @@ const Committees: React.FC = () => {
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Floating orbs */}
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               y: [0, -30, 0],
               opacity: [0.3, 0.6, 0.3]
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-20 left-[10%] w-32 h-32 sm:w-48 sm:h-48 bg-aegis-brown/10 rounded-full blur-3xl"
           />
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               y: [0, 40, 0],
               opacity: [0.2, 0.5, 0.2]
             }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
             className="absolute top-1/3 right-[5%] w-40 h-40 sm:w-64 sm:h-64 bg-aegis-burgundy/10 rounded-full blur-3xl"
           />
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               y: [0, -20, 0],
               x: [0, 20, 0]
             }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 4 }}
             className="absolute bottom-1/4 left-[20%] w-24 h-24 sm:w-40 sm:h-40 bg-aegis-brown/15 rounded-full blur-2xl"
           />
-          
+
           {/* Decorative lines */}
           <div className="absolute top-40 left-0 w-1/3 h-px bg-gradient-to-r from-transparent via-aegis-brown/20 to-transparent" />
           <div className="absolute top-60 right-0 w-1/4 h-px bg-gradient-to-l from-transparent via-aegis-burgundy/20 to-transparent" />
@@ -151,7 +162,7 @@ const Committees: React.FC = () => {
               className="text-center"
             >
               {/* Decorative element above title */}
-              <motion.div 
+              <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.3 }}
@@ -164,7 +175,7 @@ const Committees: React.FC = () => {
                 Choose your challenge and dive into global issues
               </p>
               {/* Decorative element below subtitle */}
-              <motion.div 
+              <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.5 }}
@@ -177,38 +188,38 @@ const Committees: React.FC = () => {
         {/* Stats Section */}
         <section className="py-6 sm:py-8 relative">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex justify-center items-center gap-6 sm:gap-12 lg:gap-16"
             >
               <div className="text-center">
-                <motion.span 
+                <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.5, type: "spring" }}
                   className="text-2xl sm:text-3xl lg:text-4xl font-heading text-aegis-brown"
                 >
-                  7
+                  8
                 </motion.span>
                 <p className="text-[10px] sm:text-xs text-aegis-off-white mt-1">Committees</p>
               </div>
               <div className="w-px h-8 sm:h-12 bg-aegis-brown/30" />
               <div className="text-center">
-                <motion.span 
+                <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
                   className="text-2xl sm:text-3xl lg:text-4xl font-heading text-aegis-brown"
                 >
-                  7
+                  8
                 </motion.span>
                 <p className="text-[10px] sm:text-xs text-aegis-off-white mt-1">Unique Agendas</p>
               </div>
               <div className="w-px h-8 sm:h-12 bg-aegis-brown/30" />
               <div className="text-center">
-                <motion.span 
+                <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.9, type: "spring" }}
@@ -244,7 +255,7 @@ const Committees: React.FC = () => {
                         >
                           {/* Hover glow effect */}
                           <div className="absolute inset-0 bg-gradient-to-br from-aegis-brown/0 via-aegis-brown/0 to-aegis-brown/0 group-hover:from-aegis-brown/5 group-hover:via-transparent group-hover:to-aegis-burgundy/5 transition-all duration-500" />
-                          
+
                           {/* Top - Committee Abbreviation */}
                           <CardItem translateZ="80" className="text-center flex-shrink-0 mb-2 sm:mb-4 relative z-10">
                             <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading text-aegis-white group-hover:text-aegis-brown transition-colors text-center w-full">
@@ -266,7 +277,7 @@ const Committees: React.FC = () => {
                           <CardItem translateZ="40" className="text-center flex-shrink-0 mt-2 sm:mt-4 relative z-10">
                             <p className="text-[10px] sm:text-xs lg:text-sm text-aegis-brown/80 group-hover:text-aegis-brown transition-colors flex items-center justify-center gap-1">
                               <span>View Details</span>
-                              <motion.span 
+                              <motion.span
                                 className="inline-block"
                                 animate={{ x: [0, 3, 0] }}
                                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -305,8 +316,8 @@ const Committees: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <a 
-                  href="/registration" 
+                <a
+                  href="/registration"
                   className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-aegis-brown to-aegis-burgundy text-aegis-white font-semibold rounded-lg hover:from-aegis-burgundy hover:to-aegis-brown transition-all duration-300 shadow-lg text-sm sm:text-base"
                 >
                   Register Now
@@ -355,7 +366,7 @@ const Committees: React.FC = () => {
                     ×
                   </button>
                 </div>
-                
+
                 {/* Agenda */}
                 <div className="border-t border-aegis-brown/20 pt-4 sm:pt-6">
                   <h3 className="text-sm sm:text-base lg:text-lg font-subheading text-aegis-brown mb-2 sm:mb-3 text-center">Agenda</h3>
