@@ -251,7 +251,7 @@ const Committees: React.FC = () => {
                       >
                         <CardItem
                           translateZ="50"
-                          className="aspect-square w-full bg-aegis-dark-gray/50 rounded-xl sm:rounded-2xl border border-aegis-brown/30 hover:border-aegis-brown/50 transition-all duration-300 cursor-pointer p-3 sm:p-4 lg:p-6 flex flex-col group relative overflow-hidden"
+                          className="aspect-square w-full min-h-[180px] sm:min-h-[200px] lg:min-h-[240px] bg-aegis-dark-gray/50 rounded-xl sm:rounded-2xl border border-aegis-brown/30 hover:border-aegis-brown/50 transition-all duration-300 cursor-pointer p-3 sm:p-4 lg:p-6 flex flex-col group relative overflow-hidden"
                         >
                           {/* Hover glow effect */}
                           <div className="absolute inset-0 bg-gradient-to-br from-aegis-brown/0 via-aegis-brown/0 to-aegis-brown/0 group-hover:from-aegis-brown/5 group-hover:via-transparent group-hover:to-aegis-burgundy/5 transition-all duration-500" />
